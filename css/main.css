@@ -10,6 +10,18 @@ border-radius: 3%;
 padding: 2%;
 }
 
+.home{
+
+    margin: 0 auto;
+    width: 29%;
+    height: 100%;
+    background-color: #f8f9fa;
+    border-color: black;
+    border-style: solid;
+    border-radius: 3%;
+    padding: 2%;
+    }
+
 body{
     background-image: url("../image/background.jpg");
     background-repeat: no-repeat;
@@ -27,16 +39,4 @@ body{
     border-style: solid;
     border-color: black;
 border-radius: 3%;
-}
-
-.home{
-    margin: 0 auto;
-    width: 29%;
-    height: 100%;
-    background-color: #f8f9fa;
-    border-color: black;
-    border-style: solid;
-    border-radius: 3%;
-    padding: 2%;
-
 }

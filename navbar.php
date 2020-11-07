@@ -40,7 +40,7 @@
 
             </li>
 
-            <li class="nav-item dropdown">
+            <li class="nav-item dropdown" class="pseudo">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false">
                     Forum
@@ -59,11 +59,9 @@
                 <a class="nav-link" href="index.php">Sign in/ Sign up</a>
             </li>
 
-
-        </ul>
-        <li class="nav-item dropdown" class="form-inline my-2 my-lg-0">
+            <li class="nav-item dropdown" class="form-inline my-2 my-lg-0">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false">
+                     aria-expanded="false">
                     Mon pseudo
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -71,6 +69,8 @@
                     <a class="dropdown-item" href="#">Déconnexion</a>
                 </div>
         </li>
+        </ul>
+
     </div>
 
 

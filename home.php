@@ -10,9 +10,11 @@
 
 <body>
 
-<div class="home">
+<div class="form">
+
 <h1>Bienvenu sur le site</h1>
-<span>Ici c'est un hub pour tout les gamer qui souhaite en apprendre plus sur les nouveautés concernant les jeux vidéo</span>
+<span>Ici c'est un hub pour tous les gamer qui souhaite en apprendre plus sur les nouveautés concernant les jeux vidéo</span>
+
 </div>
 
 </body>
