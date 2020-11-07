@@ -9,9 +9,6 @@
 </head>
 
 <body style="background-image: url('image/background.jpg');">
-<h1 class="connexion" >Connexion</h1>
-    <h1 class="connexion" >Inscritpion</h1>
-
     <button type="button" onclick="connexion()" class="btn btn-primary">Connexion</button>
     <button type="button" onclick="inscription()" class="btn btn-success">Inscritpion</button>
   <div class="form" id="connexion">
