@@ -2,65 +2,82 @@
 
 <head>
 
-  <title>Jeux vidéo</title>
+  <title>Accueil</title>
 
   <?php include 'bootstrap.php' ?>
-
+  <?php include 'navbar.php' ?>
+  <?php include 'login.php' ?>
 </head>
 
-<body style="background-image: url('image/background.jpg');">
-    <button type="button" onclick="connexion()" class="btn btn-primary">Connexion</button>
-    <button type="button" onclick="inscription()" class="btn btn-success">Inscritpion</button>
-  <div class="form" id="connexion">
+<body>
+  <div class="tab">
+    <button class="tablinks" onclick="console(event, 'Playstation', 'blue')"><i class="fab fa-playstation"></i>  Playstation</button>
+    <button class="tablinks" onclick="console(event, 'Xbox')"><i class="fab fa-xbox"></i>  Xbox</button>
+    <button class="tablinks" onclick="console(event, 'Nintedo')"><i class="fas fa-gamepad"></i>  Nintedo</button>
+    <button class="tablinks" onclick="console(event, 'PC')"><i class="fas fa-desktop"></i>  PC</button>
+  </div>
 
-    <form class="connexion" >
-      <div class="form-group">
-        <label for="exampleInputEmail1">Pseudo</label>
-        <input type="text" name="pseudo" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+  <!-- Page content -->
+  <div class="home">
+
+    <h1>News</h1> <button class="button"><span><i class="fas fa-plus"></i>   Publier un article</span></button>
+
+
+    <div class="card mb-3 tabcontent" style="width: 100%;" id="Playstation" >
+      <div class="row no-gutters">
+        <div class="col-md-4">
+          <img src="image/ps.jpg" class="card-img" alt="...">
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h5 class="card-title">PlayStation</h5>
+            <p class="card-text">Exemple d'article sur la console</p>
+          </div>
+        </div>
       </div>
-      <div class="form-group">
-        <label for="exampleInputPassword1">Password</label>
-        <input type="password" name="password" class="form-control" id="exampleInputPassword1">
-      </div>
-      <button type="submit" class="btn btn-dark">Connexion</button>
-    </form>
     </div>
 
-    <div class="form" id="inscription">
-    <form class="connexion">
-      <div class="form-group">
-        <label for="exampleInputEmail1">Pseudo</label>
-        <input type="text" name="pseudo" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+    <div class="card mb-3 tabcontent" style="width: 100%;" id="Xbox">
+      <div class="row no-gutters">
+        <div class="col-md-4">
+          <img src="image/xbox.jpg" class="card-img" alt="...">
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h5 class="card-title">Xbox</h5>
+            <p class="card-text">Exemple d'article sur la console</p>
+          </div>
+        </div>
       </div>
+    </div>
 
-      <div class="form-group">
-        <label for="exampleFormControlInput1">Email</label>
-        <input type="email" name="email" class="form-control" id="exampleFormControlInput1"
-          placeholder="name@example.com">
+    <div class="card mb-3 tabcontent" style="width: 100%;" id="Nintedo">
+      <div class="row no-gutters">
+        <div class="col-md-4">
+          <img src="image/nintendo.jpg" class="card-img" alt="...">
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h5 class="card-title">Nintendo</h5>
+            <p class="card-text">Exemple d'article sur la console</p>
+          </div>
+        </div>
       </div>
+    </div>
 
-      <div class="form-group">
-        <label for="exampleInputEmail1">Nom</label>
-        <input type="text" name="nom" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+    <div class="card mb-3 tabcontent" style="width: 100%;" id="PC">
+      <div class="row no-gutters">
+        <div class="col-md-4">
+          <img src="image/pc.jpg" class="card-img" alt="...">
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h5 class="card-title">PC</h5>
+            <p class="card-text">Exemple d'article sur la console</p>
+          </div>
+        </div>
       </div>
-
-      <div class="form-group">
-        <label for="exampleInputEmail1">Prenom</label>
-        <input type="text" name="prenom" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-      </div>
-
-      <div class="form-group">
-        <label for="exampleInputPassword1">Mot de passe</label>
-        <input type="password" name="password" class="form-control" id="exampleInputPassword1">
-      </div>
-
-      <div class="form-group">
-        <label for="exampleInputPassword1">Confirler le mot de passe</label>
-        <input type="password" name="cpassword" class="form-control" id="exampleInputPassword1">
-      </div>
-      <button type="submit" class="btn btn-dark">Inscritpion</button>
-    </form>
-  
+    </div>
 </body>
 
 </html>
