@@ -1,9 +1,7 @@
 <html>
 
 <head>
-
   <title>Accueil</title>
-
   <?php include 'bootstrap.php' ?>
   <?php include 'navbar.php' ?>
   <?php include 'login.php' ?>
