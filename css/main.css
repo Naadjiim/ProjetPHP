@@ -18,12 +18,17 @@ body {
     background-size: cover;
 }
 
+.dark-mode {
+  background-color: black;
+  color: white;
+}
+
 .connexion {
     text-align: center;
 }
 
 .home {
-    float: left;
+    float: right;
     width: 90%;
     height: 100%;
     padding: 5%;
@@ -79,6 +84,9 @@ body {
     width: 100%;
     background-color: #2b2b2b;
     overflow: auto;
+    position: fixed;
+    z-index: 1;
+
   }
   
   /* Navbar links */
@@ -117,7 +125,7 @@ body {
     margin: 0;
     padding: 0;
     width: 10%;
-    background-color: #f1f1f1;
+    background-color: #2b2a2a;
     position: fixed;
     height: 100%;
     overflow: auto;
@@ -137,9 +145,13 @@ body {
   .tab {
     float: left;
     border: 1px solid #ccc;
-    background-color: #f1f1f1;
+    background-color: #2b2a2a;
     width: 10%;
     height: 100%;
+    position: fixed;
+    z-index: 1;
+    top: 64px;
+    
   }
   
   /* Style the buttons that are used to open the tab content */

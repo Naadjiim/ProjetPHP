@@ -13,7 +13,7 @@
   <h1><i class="fas fa-newspaper"></i>Ajouter un article</h1>
 
 
-  <form action="action_page.php" method="post">
+  <form action="action_page.php" method="post" style="margin-top: 5%;">
 
   <div class="container" style="width: 45%; float: right;">
     <label for="uname"><b>Titre</b></label>

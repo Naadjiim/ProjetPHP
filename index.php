@@ -20,7 +20,8 @@
   <!-- Page content -->
   <div class="home">
 
-    <h1>News</h1> <button class="button" onclick="location.href='addArticle.php';"><span><i class="fas fa-plus"></i>   Publier un article</span></button>
+    <h1>News</h1> 
+    <button class="button" onclick="location.href='addArticle.php';"><span><i class="fas fa-plus"></i>   Publier un article</span></button>
 
 
     <div class="card mb-3 tabcontent" style="width: 100%;" id="Playstation" >
