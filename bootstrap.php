@@ -8,3 +8,4 @@
 <script src="js/script.js" ></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <script src="https://kit.fontawesome.com/9b3e6df322.js" crossorigin="anonymous"></script>
+<script src="https://cdn.tiny.cloud/1/7tbdaidhth9ngax0okbjf5rwrd69ikinx7powbblw82ya2gt/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
