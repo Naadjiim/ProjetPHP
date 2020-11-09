@@ -1,6 +1,7 @@
+<!DOCTYPE html>
 <html>
 
-<head>
+<head lang="fr">
 
   <title>Accueil</title>
 
@@ -11,7 +12,7 @@
 
 <body>
   <div class="tab">
-    <button style="background-color: #0c7ebd; color:white;" class="tablinks" onclick="console(event, 'Playstation', 'blue')"><i class="fab fa-playstation"></i>  Playstation</button>
+    <button style="background-color: #0c7ebd; color:white;" class="tablinks" onclick="console(event, 'Playstation')"><i class="fab fa-playstation"></i>  Playstation</button>
     <button style="background-color: #24A723; color:white;" class="tablinks" onclick="console(event, 'Xbox')"><i class="fab fa-xbox"></i>  Xbox</button>
     <button style="background-color: #D10018; color:white;" class="tablinks" onclick="console(event, 'Nintedo')"><i class="fas fa-gamepad"></i>  Nintedo</button>
     <button style="background-color: #1D1D1D; color:white;" class="tablinks" onclick="console(event, 'PC')"><i class="fas fa-desktop"></i>  PC</button>
@@ -79,6 +80,7 @@
         </div>
       </div>
     </div>
+  </div>
 </body>
 
 </html>

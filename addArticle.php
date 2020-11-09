@@ -10,10 +10,10 @@
 </head>
 
 <body>
-  <h1><i class="fas fa-newspaper"></i>Ajouter un article</h1>
+  <h1><i class="fas fa-newspaper" style="margin-top: 5%;"></i>Ajouter un article</h1>
 
 
-  <form action="action_page.php" method="post" style="margin-top: 5%;">
+  <form action="action_page.php" method="post" style="margin-top: 2%;">
 
   <div class="container" style="width: 45%; float: right;">
     <label for="uname"><b>Titre</b></label>
