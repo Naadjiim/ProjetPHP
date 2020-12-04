@@ -7,7 +7,6 @@
     <?php include 'navbar.php' ?>
     <?php include 'login.php' ?>
   </head>
-
   <body>
     <div class="tab">
       <button style="background-color: #0c7ebd; color:white;" class="tablinks" onclick="console(event, 'Playstation')"><i class="fab fa-playstation"></i>  Playstation</button>
@@ -79,10 +78,5 @@
         </div>
       </div>
     </div>
-<<<<<<< HEAD
   </body>
-=======
-  </div>
-</body>
->>>>>>> d1cdcdf2fcab0ff08fd22038bd0c921d02c2ad6a
 </html>
