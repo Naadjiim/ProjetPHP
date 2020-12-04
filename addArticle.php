@@ -1,3 +1,14 @@
+<?php
+session_start(); 
+
+if(!isset($_SESSION['pseudo'])) {
+
+  header('location: index.php');
+}
+
+else{
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -13,37 +24,42 @@
   <h1><i class="fas fa-newspaper" style="margin-top: 5%;"></i>Ajouter un article</h1>
 
 
-  <form action="Article.php" method="post" style="margin-top: 2%;">
+  <form action="action_page.php" method="post" style="margin-top: 2%;">
 
   <div class="container" style="width: 45%; float: right;">
-    <label for="titre"><b>Titre</b></label>
-    <input type="text" placeholder="Entre un Titre" name="titre" required>
+    <label for="uname"><b>Titre</b></label>
+    <input type="text" placeholder="Entre un Titre" name="uname" required>
 
     <label class="container" style="background-color: #0c7ebd; color:white;">
-      <input type="checkbox" name="console[]" value="1" checked>
-      <span class="checkmark"></span><i class="fab fa-playstation" ></i>  Playstation
-    </label>
+  <input type="checkbox" checked="checked">
+  <span class="checkmark"></span><i class="fab fa-playstation"></i>  Playstation
+</label>
 
-    <label class="container" style="background-color: #24A723; color:white;">
-      <input type="checkbox" name="console[]" value="2">
-      <span class="checkmark"></span><i class="fab fa-xbox"></i>  Xbox
-    </label>
+<label class="container" style="background-color: #24A723; color:white;">
+  <input type="checkbox">
+  <span class="checkmark"></span><i class="fab fa-xbox"></i>  Xbox
+</label>
 
-    <label class="container" style="background-color: #D10018; color:white;">
-      <input type="checkbox" name="console[]" value="3">
-      <span class="checkmark"></span><i class="fas fa-gamepad"></i>  Nintedo
-    </label>
+<label class="container" style="background-color: #D10018; color:white;">
+  <input type="checkbox">
+  <span class="checkmark"></span><i class="fas fa-gamepad"></i>  Nintedo
+</label>
 
-    <label class="container" style="background-color: #1D1D1D; color:white;">
-      <input type="checkbox" name="console[]" value="4">
-      <span class="checkmark"></span><i class="fas fa-desktop"></i>  PC
-    </label>
+<label class="container" style="background-color: #1D1D1D; color:white;">
+  <input type="checkbox">
+  <span class="checkmark"></span><i class="fas fa-desktop"></i>  PC
+</label>
+
   </div>
 
-  <textarea style="width: 50%;" id="basic-example" name="contenu"></textarea>
+  
+ 
+
+  <textarea style="width: 50%;" id="basic-example">
+  </textarea>
 
 
-  <button class="button" type="submit" name="addArticle"><span><i class="fas fa-plus"></i> Publier</span></button>
+  <button class="button" type="submit"><span><i class="fas fa-plus"></i> Publier</span></button>
   </form>
 
   
@@ -67,3 +83,4 @@
 </body>
 
 </html>
+<?php }
