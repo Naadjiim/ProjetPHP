@@ -19,8 +19,16 @@
     <div class="home">
 
       <h1>News</h1> 
-      <button class="button" onclick="location.href='addArticle.php';"><span><i class="fas fa-plus"></i>   Publier un article</span></button>
       
+      <?php
+      if(isset($_SESSION['pseudo']))
+    {
+      ?>
+
+      <button class="button" onclick="location.href='addArticle.php';"><span><i class="fas fa-plus"></i>   Publier un article</span></button>
+      <?php
+    }
+    ?>
       <div class="card mb-3 tabcontent" style="width: 100%;" id="Playstation" >
         <div class="row no-gutters">
           <div class="col-md-4">

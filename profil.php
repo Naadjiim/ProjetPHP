@@ -12,8 +12,8 @@
 <body>
 <div class="card">
   <img src="image/avatar.png" alt="John" style="width:100%">
-  <h1>Mon pseudo</h1>
-  <p class="title">Administrateur</p>
+  <h1><?= $_SESSION['pseudo'] ?></h1>
+  <p class="title"><?= $_SESSION['role'] ?></p>
   <a href="#"><i class="fa fa-dribbble"></i></a>
   <a href="#"><i class="fa fa-twitter"></i></a>
   <a href="#"><i class="fa fa-linkedin"></i></a>
