@@ -1,8 +1,6 @@
 <?php
 include 'db.php';
 session_start();
-
-//  session_start & isset session[pseudo] provisoire
 if(isset($_SESSION['pseudo']))
 {
     if(isset($_POST['addArticle']))
