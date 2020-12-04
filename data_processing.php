@@ -1,6 +1,6 @@
 <?php
 session_start();
-include 'connexionBdd.php';
+include 'db.php';
 // Inscription
 if(isset($_POST['signUp'], $_POST['email']))
 {
@@ -16,7 +16,7 @@ if(isset($_POST['signUp'], $_POST['email']))
     {
         if($_POST['psw'] != $_POST['psw-repeat'])
         {
-            echo '<html><center>Le mot de passe doit être le même que celui de la confirmation</html></center>';
+            echo '<html><center>Le mot de passe doit être le même que celui de la confirmation</center></html>';
         }
         else
         {
@@ -30,7 +30,7 @@ if(isset($_POST['signUp'], $_POST['email']))
                 'role' => 'membre'
             ));
             $rqst->closeCursor();
-            // header('location: index.php');
+            header('location: index.php?InscripGood');
             echo '<html><center>Inscription réussie</html></center>';
         }   
     }
@@ -64,7 +64,7 @@ if(isset($_POST['login'], $_POST['uname']))
 				$_SESSION['uname'] = $_POST['uname'];
 				$_SESSION['psw'] = $result['psw'];
             }
-            echo 'Connexion admin réussie<a href="deconnexion.php">Deco</a>';
+			header('location: index.php');
 		}
 		elseif($passCorrect && $result['role'] == 'membre')
 		{
@@ -77,7 +77,7 @@ if(isset($_POST['login'], $_POST['uname']))
 				$_SESSION['uname'] = $_POST['uname'];
 				$_SESSION['psw'] = $result['psw'];
             }
-            echo 'Connexion membre réussie<a href="deconnexion.php">Deco</a>';
+			header('location: index.php');
 		}
 		// elseif($passCorrect && $result['role'] === 'guest')
 		// {
@@ -85,8 +85,8 @@ if(isset($_POST['login'], $_POST['uname']))
 		// }
 		else
 		{
-			echo '<center><p>Mauvais identifiant ou mot de passe. <br /> <a href="connexion.php">Retour a la page de connexion</a></p></center>';
+			echo '<center><p>Mauvais identifiant ou mot de passe. <br /> <a href="index.php">Retour a la page de connexion</a></p></center>';
 		}
 	}
 }
-?>
+
