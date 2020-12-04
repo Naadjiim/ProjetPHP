@@ -30,7 +30,7 @@ if(isset($_POST['signUp'], $_POST['email']))
                 'role' => 'membre'
             ));
             $rqst->closeCursor();
-            header('location: index.php?InscripGood');
+            header('location: index.php');
             echo '<html><center>Inscription réussie</html></center>';
         }   
     }
