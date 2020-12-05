@@ -1,8 +1,11 @@
 <?php
 // Ajout d'article
     session_start();
-if($_POST['ajoutArticle'])
+if(!isset($_POST['ajoutArticle']))
 {
+
+    $array = [$_POST['play'], $_POST['xbox'], $_POST['nintendo'], $_POST['PC'] ];
+ 
     require_once 'bdd.php';
     $rqst = $bdd->prepare('INSERT INTO `articles`(`titre`, `contenu`, `console`, `pseudo`,  `dateHeure`) 
                            VALUES (:titre, :contenu, :console, :pseudo, NOW())');
