@@ -31,18 +31,18 @@
 
         
         <label for="email"><b>Email</b></label>
-        <input type="text" value=<?= $_SESSION['email'] ?> name="email" required>
+        <input type="text" value=<?= $_SESSION['email']; ?> name="email" required>
 
         <label for="pseudo"><b>Pseudo</b></label>
-        <input type="text" value=<?= $_SESSION['pseudo'] ?> name="pseudo" required>
+        <input type="text" value=<?= $_SESSION['pseudo']; ?> name="pseudo" required>
 
         <label for="psw"><b>Password</b></label>
-        <input type="password" value=<?= $_SESSION['psw'] ?> name="psw" required>
-        <input type="text" value=<?= $_SESSION['id'] ?> hidden>
+        <input type="password" value=<?= $_SESSION['psw']; ?> name="psw" required>
+        <input type="text" value=<?= $_SESSION['id'] ?> name="id" hidden>
 
         <div class="clearfix">
           <button type="button" onclick="document.getElementById('id03').style.display='none'" class="cancelbtn">Cancel</button>
-          <button type="submit" class="signupbtn" name="signUp">Modifier mes informations</button>
+          <button type="submit" class="signupbtn" name="modifier">Modifier mes informations</button>
         </div>
       </div>
     </form>

@@ -44,10 +44,10 @@
       <div class="container">
       <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">&times;</span>
 
-        <h1>Inscritpion</h1>
+        <h1>Inscription</h1>
         <hr>
         <label for="email"><b>Email</b></label>
-        <input type="text" placeholder="Entrez une adresse Email" name="email" required>
+        <input type="email" placeholder="Entrez une adresse Email" name="email" required><br />
 
         <label for="pseudo"><b>Pseudo</b></label>
         <input type="text" placeholder="Entrez un pseudo" name="pseudo" required>
@@ -57,15 +57,9 @@
 
         <label for="psw-repeat"><b>Confirmer le mot de me passe</b></label>
         <input type="password" placeholder="Confirmez votre mot de passe" name="psw-repeat" required>
-        
-        <label>
-          <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Se souvenir de moi
-        </label>
-
-
         <div class="clearfix">
           <button type="button" onclick="document.getElementById('id02').style.display='none'" class="cancelbtn">Annuler</button>
-          <button type="submit" class="signupbtn" name="signUp">Inscritpion</button>
+          <button type="submit" class="signupbtn" name="signUp">Inscription</button>
         </div>
       </div>
     </form>
