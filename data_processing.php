@@ -1,9 +1,8 @@
 <?php
-session_start();
-include 'db.php';
 // Inscription
 if(isset($_POST['signUp'], $_POST['email']))
 {
+	require_once 'bdd.php';
     $rqst = $bdd->prepare('SELECT COUNT(*) FROM membres WHERE pseudo = ? OR email = ?');
     $rqst->execute(array($_POST['pseudo'], $_POST['email']));
     $emailOrPseudo = $rqst->fetch();
@@ -39,12 +38,12 @@ if(isset($_POST['signUp'], $_POST['email']))
 // Connexion
 if(isset($_POST['login'], $_POST['uname']))
 {
+	include 'bdd.php';
 	//  Récupération de l'utilisateur et de son mot de passe
 	$rqst = $bdd->prepare('SELECT id, pseudo, email, password, role FROM membres WHERE pseudo = ?');
 	$rqst->execute(array($_POST['uname']));
 	$result = $rqst->fetch();
     $rqst->closeCursor();
-    
 	// Comparaison du pass envoyé via le formulaire avec la base
 	$passCorrect = password_verify($_POST['psw'], $result['password']);
 	if (!$result)
@@ -54,7 +53,8 @@ if(isset($_POST['login'], $_POST['uname']))
 	else
 	{
 		if ($passCorrect && $result['role'] == 'admin') 
-		{ 
+		{
+			session_start();
 			$_SESSION['id'] = $result['id'];
 			// $_SESSION['prenom'] = $result['prenom'];
 			$_SESSION['pseudo'] = $result['pseudo'];
@@ -85,10 +85,6 @@ if(isset($_POST['login'], $_POST['uname']))
             }
 			header('location: index.php');
 		}
-		// elseif($passCorrect && $result['role'] === 'guest')
-		// {
-		// 	header('location: membres/espaceMembre.php');
-		// }
 		else
 		{
 			echo '<center><p>Mauvais identifiant ou mot de passe. <br /> <a href="index.php">Retour a la page de connexion</a></p></center>';

@@ -1,22 +1,16 @@
-<?php session_start();
-
-include 'db.php';
-$rqst = $bdd->prepare('SELECT *, DATE_FORMAT(dateHeure, "%d/%m/%Y / %Hh%i") datH FROM articles ORDER BY id DESC');
-    $rqst->execute();
-    $articles = $rqst->fetch();
-
-?>
-
-
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html>
   <head>
     <title>Accueil</title>
-    <?php include 'bootstrap.php'; ?>
-    <?php include 'navbar.php' ?>
-    <?php include 'login.php' ?>
+
   </head>
   <body>
+    <header>
+        <?php include 'bootstrap.php'; ?>
+        <?php include 'navbar.php' ?>
+        <?php include 'login.php' ?>
+    </header>
     <div class="tab">
       <button style="background-color: #0c7ebd; color:white;" class="tablinks" onclick="console(event, 'Playstation')"><i class="fab fa-playstation"></i>  Playstation</button>
       <button style="background-color: #24A723; color:white;" class="tablinks" onclick="console(event, 'Xbox')"><i class="fab fa-xbox"></i>  Xbox</button>
@@ -31,25 +25,28 @@ $rqst = $bdd->prepare('SELECT *, DATE_FORMAT(dateHeure, "%d/%m/%Y / %Hh%i") datH
 
       <?php
       if(isset($_SESSION['pseudo']))
-    {
+      {
       ?>
-
-      <button class="button" onclick="location.href='addArticle.php';"><span><i class="fas fa-plus"></i> Publier un article</span></button>
+        <button class="button" onclick="location.href='addArticle.php';"><span><i class="fas fa-plus"></i> Publier un article</span></button>
       <?php
-    }
-
-?>
-<div class="card" id="Playstation">
-  <div class="card-header"><?= $articles['titre']?> <i style="background-color: #0c7ebd; color:white;" class="fab fa-playstation"></i>  <i style="background-color: #24A723; color:white;" class="fab fa-xbox"></i> 
-  </div>
-  <div class="card-body">
-    <blockquote class="blockquote mb-0">
-      <p><?= $articles['contenu']?></p>
-    </blockquote>
-  </div>
-</div>
-
-
+      }
+      if(isset($_GET['ajoutArticle']))
+      {
+        echo '<p>Ajout de l\'article réussie</p>';
+      }
+      if(isset($_GET['ajoutCom']))
+      {
+        echo '<p>Ajout du commentaire réussie</p>';
+      }
+      if(isset($_GET['erreurAjout']))
+      {
+        
+      }
+      ?>
+      <?php 
+      require_once'Article.php'; 
+      vue(); 
+      ?>
     </div>
   </body>
 </html>

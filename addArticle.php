@@ -1,14 +1,8 @@
 <?php
-session_start(); 
-
-if(!isset($_SESSION['pseudo'])) {
-
-  header('location: index.php');
-}
-
-else{
+session_start();
+if(isset($_SESSION['pseudo']))
+{
 ?>
-
 <!DOCTYPE html>
 <html>
 
@@ -21,32 +15,46 @@ else{
 </head>
 
 <body>
-  <h1><i class="fas fa-newspaper" style="margin-top: 5%;"></i>Ajouter un article</h1>
+  
+  <h1><i class="fas fa-newspaper" style="margin-top: 5%;"></i>
+    <?php if(isset($_GET['erreurAjout']))
+    {
+      echo '<span style="color: red;">Erreur lors de l\'ajout de l\'article</span>';
+    }
+    elseif(isset($_GET['ajoutArticle']))
+    {
+      echo '<span style="color: blue;">Ajout d\'article réussi</span>';
+    }
+    else{
+      echo 'Ajouter un article';
+    } 
+    ?>
+  </h1>
 
 
-  <form action="action_page.php" method="post" style="margin-top: 2%;">
+  <form action="Article.php" method="post" style="margin-top: 2%;">
 
   <div class="container" style="width: 45%; float: right;">
     <label for="uname"><b>Titre</b></label>
-    <input type="text" placeholder="Entre un Titre" name="uname" required>
+    <input type="text" placeholder="Entre un Titre" name="titre" required>
 
     <label class="container" style="background-color: #0c7ebd; color:white;">
-  <input type="checkbox" checked="checked">
+  <input type="checkbox" name="play" checked="checked">
   <span class="checkmark"></span><i class="fab fa-playstation"></i>  Playstation
 </label>
 
 <label class="container" style="background-color: #24A723; color:white;">
-  <input type="checkbox">
+  <input type="checkbox" name="xbox">
   <span class="checkmark"></span><i class="fab fa-xbox"></i>  Xbox
 </label>
 
 <label class="container" style="background-color: #D10018; color:white;">
-  <input type="checkbox">
-  <span class="checkmark"></span><i class="fas fa-gamepad"></i>  Nintedo
+  <input type="checkbox" name="nintendo">
+  <span class="checkmark"></span><i class="fas fa-gamepad"></i>  Nintendo
 </label>
 
 <label class="container" style="background-color: #1D1D1D; color:white;">
-  <input type="checkbox">
+  <input type="checkbox" name="pc">
   <span class="checkmark"></span><i class="fas fa-desktop"></i>  PC
 </label>
 
@@ -55,11 +63,11 @@ else{
   
  
 
-  <textarea style="width: 50%;" id="basic-example">
+  <textarea style="width: 50%;" id="basic-example" name="contenu">
   </textarea>
 
 
-  <button class="button" type="submit"><span><i class="fas fa-plus"></i> Publier</span></button>
+  <button class="button" type="submit" name="ajoutArticle"><span><i class="fas fa-plus"></i> Publier</span></button>
   </form>
 
   
@@ -83,4 +91,9 @@ else{
 </body>
 
 </html>
-<?php }
+<?php
+}
+else
+{
+  header('location: index.php');
+}
