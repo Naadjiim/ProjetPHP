@@ -1,49 +1,31 @@
 <?php
 // Ajout d'article
-if(isset($_POST['ajoutArticle'], $_POST['titre'], $_POST['contenu']))
-{
     session_start();
-    if(isset($_SESSION['pseudo']))
-    {
-        $arr = [
-            'ps' => $_POST['play'],
-            'xb' => $_POST['xbox'],
-            'nd' => $_POST['nintendo'],
-            'pc' => $_POST['pc']
-        ];
-        // $mpl = [$_POST['Playstation'],$_POST['Xbox'],$_POST['Nintendo'],$_POST['PC']];
-        require_once 'bdd.php';
-        $rqst = $bdd->prepare('INSERT INTO `articles`(`titre`, `contenu`, `console`, `pseudo`,  `dateHeure`) 
-                                VALUES (:titre, :contenu, :console, :pseudo, NOW())');
-        $rqst->execute(array(
-            'titre' => $_POST['titre'],
+if($_POST['ajoutArticle'])
+{
+    require_once 'bdd.php';
+    $rqst = $bdd->prepare('INSERT INTO `articles`(`titre`, `contenu`, `console`, `pseudo`,  `dateHeure`) 
+                           VALUES (:titre, :contenu, :console, :pseudo, NOW())');
+    $rqst->execute(array(
+      'titre' => $_POST['titre'],
             'contenu' => $_POST['contenu'],
             'console' => $arr,
             'pseudo' => $_SESSION['pseudo']
-        ));
-        $rqst->closeCursor();
-        header('location: index.php?ajoutArticle');
-    }
-    if(isset($_POST['addCom']) && isset($_GET['idArticle']))
-    {
-        $rqst = $bdd->prepare('INSERT INTO `commentaires`(`commentaire`, `pseudo`, `idArticle`, `dateHeure`) 
-                                VALUES (:commentaire, :pseudo, :id, NOW())');
-        $rqst->execute(array(
-            'commentaire' => $_POST['commentaire'],
-            'pseudo' => $_SESSION['pseudo'],
-            'id' => $_GET['idArticle']
-        ));
-        $rqst->closeCursor();
-        header('location: index.php#'.$_GET['id']);
-    }
-    else
-    {
-        header('location: index.php?'.$_GET['id']);
-    }
-}
-else
+    ));
+    $rqst->closeCursor();
+    header('location: index.php?ajoutArticle');
+} 
+if(isset($_POST['addCom']) && isset($_GET['idArticle']))
 {
-    header('location: index.php');
+    $rqst = $bdd->prepare('INSERT INTO `commentaires`(`commentaire`, `pseudo`, `idArticle`, `dateHeure`) 
+                            VALUES (:commentaire, :pseudo, :id, NOW())');
+    $rqst->execute(array(
+        'commentaire' => $_POST['commentaire'],
+        'pseudo' => $_SESSION['pseudo'],
+        'id' => $_GET['idArticle']
+    ));
+    $rqst->closeCursor();
+    header('location: index.php#'.$_GET['id']);
 }
 // Affichage d'articles
 function vue()

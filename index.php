@@ -40,7 +40,7 @@
       }
       if(isset($_GET['erreurAjout']))
       {
-        
+        echo '<p>Erreur lors de l\'ajout</p>';
       }
       ?>
       <?php 
