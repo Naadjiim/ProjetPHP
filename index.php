@@ -27,7 +27,7 @@ $rqst = $bdd->prepare('SELECT *, DATE_FORMAT(dateHeure, "%d/%m/%Y / %Hh%i") datH
     <!-- Page content -->
     <div class="home">
 
-      <h1>News</h1> 
+      <h1>Nouveauté</h1> 
 
       <?php
       if(isset($_SESSION['pseudo']))

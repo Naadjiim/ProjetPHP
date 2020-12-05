@@ -1,3 +1,13 @@
+<?php
+session_start(); 
+
+if(!isset($_SESSION['pseudo'])) {
+
+  header('location: index.php');
+}
+
+else{
+?>
 
 <!DOCTYPE html>
 <html>
@@ -73,3 +83,4 @@
 </body>
 
 </html>
+<?php }

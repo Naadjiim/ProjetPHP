@@ -59,19 +59,25 @@ if(isset($_POST['login'], $_POST['uname']))
 			// $_SESSION['prenom'] = $result['prenom'];
 			$_SESSION['pseudo'] = $result['pseudo'];
 			$_SESSION['role'] = $result['role'];
+			$_SESSION['email'] = $result['email'];
+			$_SESSION['psw'] = $result['psw'];
+
+
 			if(isset($_POST['remember']))
 			{
-				$_SESSION['uname'] = $_POST['uname'];
+				$_SESSION['pseudo'] = $_POST['uname'];
 				$_SESSION['psw'] = $result['psw'];
             }
 			header('location: index.php');
 		}
 		elseif($passCorrect && $result['role'] == 'membre')
 		{
-			$_SESSION['id'] = $result['id'];        
+			$_SESSION['id'] = $result['id'];
 			// $_SESSION['prenom'] = $result['prenom'];
-			$_SESSION['pseudo'] = $result['pseudo'];   
-			$_SESSION['role'] = $result['role'];   
+			$_SESSION['pseudo'] = $result['pseudo'];
+			$_SESSION['role'] = $result['role'];
+			$_SESSION['email'] = $result['email'];
+			$_SESSION['psw'] = $result['psw']; 
 			if(isset($_POST['remember'])) 
 			{
 				$_SESSION['uname'] = $_POST['uname'];

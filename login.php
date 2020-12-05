@@ -17,22 +17,22 @@
       </div>
 
       <div class="container">
-        <label for="uname"><b>Username</b></label>
-        <input type="text" placeholder="Enter Username" name="uname" required>
+        <label for="uname"><b>Pseudo</b></label>
+        <input type="text" placeholder="Entrez un pseudo" name="uname" required>
 
-        <label for="psw"><b>Password</b></label>
-        <input type="password" placeholder="Enter Password" name="psw" required>
+        <label for="psw"><b>Mot de passe</b></label>
+        <input type="password" placeholder="Entrez un mot de passe" name="psw" required>
         
         <label>
-          <input type="checkbox" checked="checked" name="remember"> Remember me
+          <input type="checkbox" checked="checked" name="remember"> Se souvenir de moi
         </label>
 
-        <button type="submit" name="login">Login</button>
+        <button type="submit" name="login">Connexion</button>
       </div>
 
       <div class="container" style="background-color:#2b2a2a">
-        <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-        <span class="psw">Forgot <a href="resetPassword.php">password?</a></span>
+        <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Annuler</button>
+        <span class="psw"><a href="resetPassword.php">Mot de passe oublié</a></span>
       </div>
     </form>
   </div>
@@ -40,32 +40,32 @@
 
 
   <div id="id02" class="modal">
-    <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">&times;</span>
     <form class="modal-content animate" action="data_processing.php" method="post">
       <div class="container">
-        <h1>Sign Up</h1>
-        <p>Please fill in this form to create an account.</p>
+      <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">&times;</span>
+
+        <h1>Inscritpion</h1>
         <hr>
         <label for="email"><b>Email</b></label>
-        <input type="text" placeholder="Enter Email" name="email" required>
+        <input type="text" placeholder="Entrez une adresse Email" name="email" required>
 
         <label for="pseudo"><b>Pseudo</b></label>
-        <input type="text" placeholder="Enter pseudo" name="pseudo" required>
+        <input type="text" placeholder="Entrez un pseudo" name="pseudo" required>
 
-        <label for="psw"><b>Password</b></label>
-        <input type="password" placeholder="Enter Password" name="psw" required>
+        <label for="psw"><b>Mot de passe</b></label>
+        <input type="password" placeholder="Entrez un mot de passe" name="psw" required>
 
-        <label for="psw-repeat"><b>Repeat Password</b></label>
-        <input type="password" placeholder="Repeat Password" name="psw-repeat" required>
+        <label for="psw-repeat"><b>Confirmer le mot de me passe</b></label>
+        <input type="password" placeholder="Confirmez votre mot de passe" name="psw-repeat" required>
         
         <label>
-          <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
+          <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Se souvenir de moi
         </label>
 
 
         <div class="clearfix">
-          <button type="button" onclick="document.getElementById('id02').style.display='none'" class="cancelbtn">Cancel</button>
-          <button type="submit" class="signupbtn" name="signUp">Sign Up</button>
+          <button type="button" onclick="document.getElementById('id02').style.display='none'" class="cancelbtn">Annuler</button>
+          <button type="submit" class="signupbtn" name="signUp">Inscritpion</button>
         </div>
       </div>
     </form>
