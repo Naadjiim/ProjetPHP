@@ -100,18 +100,18 @@ if(isset($_POST['login'], $_POST['uname']))
 
 
 
-// Connexion
-if(isset($_POST['login'], $_POST['uname']))
+// Modifier
+if(isset($_POST['modifier'], $_POST['email']))
 {
-
-		include 'bdd.php';
-		//  Récupération de l'utilisateur et de son mot de passe
-		$rqst = $bdd->prepare('SELECT id, pseudo, email, password, role FROM membres WHERE pseudo = ?');
-		$rqst->execute(array($_POST['uname']));
-		$result = $rqst->fetch();
-    	$rqst->closeCursor();
-		// Comparaison du pass envoyé via le formulaire avec la base
-		$passCorrect = password_verify($_POST['psw'], $result['password']);
-
+	if(preg_match("/^([\w-\.]+)@((?:[\w]+\.)+)([a-zA-Z]{2,4})/i", $_POST['email']))
+	{
+       
+    
+		require_once 'bdd.php';
+		$rqst = $bdd->prepare('UPDATE `membres` SET email=? , pseudo= ? , password = ? WHERE id = ?');
+    	$rqst->execute(array($_POST['email'], $_POST['pseudo'], $_POST['spsw'], $_POST['id']));
+		$rqst->closeCursor(); 
+		
+	}
 }
 
