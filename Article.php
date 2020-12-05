@@ -12,7 +12,7 @@ if(!isset($_POST['ajoutArticle']))
     $rqst->execute(array(
       'titre' => $_POST['titre'],
             'contenu' => $_POST['contenu'],
-            'console' => $arr,
+            'console' => $array,
             'pseudo' => $_SESSION['pseudo']
     ));
     $rqst->closeCursor();
