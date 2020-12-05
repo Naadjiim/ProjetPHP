@@ -3,8 +3,6 @@
     session_start();
 if(!isset($_POST['ajoutArticle']))
 {
-
-    $array = [$_POST['play'], $_POST['xbox'], $_POST['nintendo'], $_POST['PC'] ];
  
     require_once 'bdd.php';
     $rqst = $bdd->prepare('INSERT INTO `articles`(`titre`, `contenu`, `console`, `pseudo`,  `dateHeure`) 
@@ -12,7 +10,7 @@ if(!isset($_POST['ajoutArticle']))
     $rqst->execute(array(
       'titre' => $_POST['titre'],
             'contenu' => $_POST['contenu'],
-            'console' => $array,
+            'console' => array($_POST['play'], $_POST['xbox'], $_POST['nintendo'], $_POST['PC']),
             'pseudo' => $_SESSION['pseudo']
     ));
     $rqst->closeCursor();
@@ -34,11 +32,7 @@ if(isset($_POST['addCom']) && isset($_GET['idArticle']))
 function vue()
 {
     require_once'bdd.php';
-    $rqst = $bdd->prepare('SELECT *, DATE_FORMAT(dateHeure, "%d/%m/%Y / %H:%i") datH FROM articles ORDER BY id DESC');
-    $rqst->execute(); 
-    $array = $rqst->fetch(PDO::FETCH_ASSOC);
-    print_r($array['console']);
-    $id = 1;
+    $rqst = $bdd->query('SELECT *, DATE_FORMAT(dateHeure, "%d/%m/%Y / %H:%i") datH FROM articles ORDER BY id DESC');
     while($articles = $rqst->fetch())
     {
        
