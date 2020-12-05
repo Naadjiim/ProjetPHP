@@ -58,11 +58,6 @@ if(isset($_SESSION['pseudo']))
         <span class="checkmark"></span><i class="fas fa-desktop"></i> PC
       </label>
 
-<label class="container" style="background-color: #1D1D1D; color:white;">
-  <input type="checkbox" name="pc">
-  <span class="checkmark"></span><i class="fas fa-desktop"></i>  PC
-</label>
-
   </div>
 
   
