@@ -99,7 +99,7 @@ function vue()
         </div>
         </div>
 <?php      
-        }
+        
     }
     $rqst->closeCursor(); 
-
+}
