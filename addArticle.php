@@ -39,22 +39,22 @@ if(isset($_SESSION['pseudo']))
       <input type="text" placeholder="Entrez un Titre" name="titre" required>
 
       <label class="container" style="background-color: #0c7ebd; color:white;">
-        <input type="checkbox" name="console[]" value="play">
+        <input type="checkbox" name="play" value="play">
         <span class="checkmark"></span><i class="fab fa-playstation"></i> Playstation
       </label>
 
       <label class="container" style="background-color: #24A723; color:white;">
-        <input type="checkbox" name="console[]" value="xbox">
+        <input type="checkbox" name="xbox" value="xbox">
         <span class="checkmark"></span><i class="fab fa-xbox"></i> Xbox
       </label>
 
       <label class="container" style="background-color: #D10018; color:white;">
-        <input type="checkbox" name="console[]" value="nintendo">
+        <input type="checkbox" name="nintendo" value="nintendo">
         <span class="checkmark"></span><i class="fas fa-gamepad"></i> Nintendo
       </label>
 
       <label class="container" style="background-color: #1D1D1D; color:white;">
-        <input type="checkbox" name="console[]" value="PC">
+        <input type="checkbox" name="PC" value="PC">
         <span class="checkmark"></span><i class="fas fa-desktop"></i> PC
       </label>
 
