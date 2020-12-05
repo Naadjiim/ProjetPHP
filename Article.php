@@ -16,17 +16,17 @@ if(isset($_POST['ajoutArticle']))
     $rqst->closeCursor();
     header('location: index.php?ajoutArticle');
 } 
-if(isset($_POST['addCom']) && isset($_GET['idArticle']))
+if(isset($_POST['envoyer']) && isset($_GET['idArticle']))
 {
     $rqst = $bdd->prepare('INSERT INTO `commentaires`(`commentaire`, `pseudo`, `idArticle`, `dateHeure`) 
                             VALUES (:commentaire, :pseudo, :id, NOW())');
     $rqst->execute(array(
         'commentaire' => $_POST['commentaire'],
         'pseudo' => $_SESSION['pseudo'],
-        'id' => $_GET['idArticle']
+        'id' => $_POST['idArticle']
     ));
     $rqst->closeCursor();
-    header('location: index.php#'.$_GET['id']);
+    header('location: index.php#'.$_POST['idArticle']);
 }
 // Affichage d'articles
 function vue()
@@ -83,9 +83,11 @@ function vue()
 
             <h3>Mon pseudo</h3><p> 05/12/2020 22h00</p>
             <p>Mon commentaire</p>
-
-            <textarea name="commentaire" cols="160" rows="3"></textarea>
-            <button type="submit" name="envoyer">Envoyer</button>
+            <form action="Article.php">
+                <textarea name="commentaire" cols="160" rows="3"></textarea>
+                <input type="text" value=<?= $articles['idArticle']; ?> name="id" hidden>
+                <button type="submit" name="envoyer">Envoyer</button>
+            </form>
         </div>
         </div>
 

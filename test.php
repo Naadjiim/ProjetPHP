@@ -4,31 +4,36 @@ if(isset($_POST['modifier']))
 {
     if($_POST['psw'] != $_POST['psw-repeat'])
     {
-        header('location: index.php?diffPsw');
+        header('location: profil.php?diffPsw');
     }
     else
     {
+        session_start();
         include 'bdd.php';
-        //  Récupération de l'utilisateur et de son mot de passe
-        $passCorrect = password_verify($_POST['psw'], $result['password']);
-        if (!$passCorrect)
+        $rqst = $bdd->prepare('SELECT * FROM membres WHERE id = ?');
+        $rqst->execute(array($_SESSION['id']));
+        $rq = $rqst->fetch();              
+        if(password_verify($rq['password'], $_POST['psw-actuel']))
         {
-            header('location: index.php?erreurPsw');
-        }
-        else
-        {
-            $rqst = $bdd->prepare('UPDATE pseudo, email, password VALUES(:pseudo, :email, :password) 
-                FROM membres WHERE id = ?');
-            $rqst->execute(array($_POST['id'],
-                'pseudo' => $_POST['pseudo'],
-                'email' => $_POST['email'],
+            $rqst->closeCursor(); 
+            $rqst = $bdd->prepare('UPDATE `membres` 
+                SET `pseudo` = :pseudo, `email` = :email, `password` = :password WHERE id = :id');
+            $rqst->execute(array(
+                'id' => $_SESSION['id'], 
+                'pseudo' => $_POST['pseudo'], 
+                'email' => $_POST['email'], 
                 'password' => password_hash($_POST['psw'], PASSWORD_DEFAULT)
             ));
             $rqst->closeCursor();
-            header('location: profil.php');
+            header('location: profil.php?succes');
+        }
+        else
+        {
+           echo $_SESSION['id'];
         }
     }
 }
+// if(password_verify($_POST['psw'] == $info['password'])){} else{ echo 'Mot de passe actuel incorrect' };
 if(isset($_GET['erreurPsw']))
 {
     echo '<p>Mot de passe actuelle incorrect</p>';
