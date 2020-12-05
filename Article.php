@@ -37,11 +37,11 @@ function vue()
     {
        
         ?>
-            <div class="card" id="<?= $id++?>" style="margin-bottom: 2%;">
+            <div class="card" style="margin-bottom: 2%;">
         <?php
   
         ?>
-        <div class="card-header">
+        <div class="card-header" style="font-size: 30px;">
             <?php 
             echo $articles['titre'].' | <b>'.$articles['pseudo'].'</b> | ';
             if($articles['console'] == "Playstation")
@@ -76,7 +76,36 @@ function vue()
                 <p><?= $articles['contenu'] ?></p>
             </blockquote>
         </div>
+        <button class="dropdown-btn">Commentaire<i class="fa fa-caret-down"></i></button>
+        <div class="dropdown-container">
+            <h3>Mon pseudo</h3><p> 05/12/2020 22h00</p>
+            <p>Mon commentaire</p>
+
+            <h3>Mon pseudo</h3><p> 05/12/2020 22h00</p>
+            <p>Mon commentaire</p>
+
+            <textarea name="commentaire" cols="160" rows="3"></textarea>
+            <button type="submit" name="envoyer">Envoyer</button>
         </div>
+        </div>
+
+        <script>
+        //* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
+var dropdown = document.getElementsByClassName("dropdown-btn");
+var i;
+
+for (i = 0; i < dropdown.length; i++) {
+  dropdown[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var dropdownContent = this.nextElementSibling;
+    if (dropdownContent.style.display === "block") {
+      dropdownContent.style.display = "none";
+    } else {
+      dropdownContent.style.display = "block";
+    }
+  });
+}
+</script>
 <?php      
         
     }
