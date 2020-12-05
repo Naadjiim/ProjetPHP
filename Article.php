@@ -1,7 +1,7 @@
 <?php
 // Ajout d'article
     session_start();
-if(!isset($_POST['ajoutArticle']))
+if(isset($_POST['ajoutArticle']))
 {
  
     require_once 'bdd.php';
