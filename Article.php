@@ -1,36 +1,105 @@
 <?php
-include 'db.php';
-session_start();
-if(isset($_SESSION['pseudo']))
+// Ajout d'article
+if(isset($_POST['ajoutArticle'], $_POST['titre'], $_POST['contenu']))
 {
-    
-        $consoles = implode('/', $_POST['console']);
-        $rqst = $bdd->prepare('INSERT INTO `articles`(`titre`, `contenu`, `dateHeure`) 
-                                VALUES (:titre, :contenu, NOW())');
+    session_start();
+    if(isset($_SESSION['pseudo']))
+    {
+        $arr = [
+            'ps' => $_POST['play'],
+            'xb' => $_POST['xbox'],
+            'nd' => $_POST['nintendo'],
+            'pc' => $_POST['pc']
+        ];
+        // $mpl = [$_POST['Playstation'],$_POST['Xbox'],$_POST['Nintendo'],$_POST['PC']];
+        require_once 'bdd.php';
+        $rqst = $bdd->prepare('INSERT INTO `articles`(`titre`, `contenu`, `console`, `pseudo`,  `dateHeure`) 
+                                VALUES (:titre, :contenu, :console, :pseudo, NOW())');
         $rqst->execute(array(
             'titre' => $_POST['titre'],
-            'contenu' => $_POST['contenu']
+            'contenu' => $_POST['contenu'],
+            'console' => $arr,
+            'pseudo' => $_SESSION['pseudo']
         ));
         $rqst->closeCursor();
-        echo 'Ajout de l\'article réussie';
-    if(isset($_POST['addCom']) && isset($_GET['id']))
+        header('location: index.php?ajoutArticle');
+    }
+    if(isset($_POST['addCom']) && isset($_GET['idArticle']))
     {
         $rqst = $bdd->prepare('INSERT INTO `commentaires`(`commentaire`, `pseudo`, `idArticle`, `dateHeure`) 
                                 VALUES (:commentaire, :pseudo, :id, NOW())');
         $rqst->execute(array(
             'commentaire' => $_POST['commentaire'],
             'pseudo' => $_SESSION['pseudo'],
-            'id' => $_GET['id']
+            'id' => $_GET['idArticle']
         ));
         $rqst->closeCursor();
-        echo 'Ajout du commentaire réussie';
+        header('location: index.php#'.$_GET['id']);
     }
     else
     {
-        echo 'Formulaire non envoyée';
+        header('location: index.php?'.$_GET['id']);
     }
 }
 else
 {
-    echo 'Session not declared';
+    header('location: index.php');
+}
+// Affichage d'articles
+function vue()
+{
+    require_once'bdd.php';
+    $rqst = $bdd->prepare('SELECT *, DATE_FORMAT(dateHeure, "%d/%m/%Y / %H:%i") datH FROM articles ORDER BY id DESC');
+    $rqst->execute(); 
+    $array = $rqst->fetch(PDO::FETCH_ASSOC);
+    print_r($array['console']);
+    $id = 1;
+    while($articles = $rqst->fetch())
+    {
+       
+        ?>
+            <div class="card" id="<?= $id++?>" style="margin-bottom: 2%;">
+        <?php
+  
+        ?>
+        <div class="card-header">
+            <?php 
+            echo $articles['titre'].' | <b>'.$articles['pseudo'].'</b> | ';
+            if($articles['console'] == "Playstation")
+            {
+            ?>
+                <i style="background-color: #0c7ebd; color:white;" class="fab fa-playstation"></i>  
+            <?php
+            }
+            if($articles['console'] == "Xbox")
+            {
+            ?>
+                <i style="background-color: #24A723; color:white;" class="fab fa-xbox"></i> 
+            <?php
+            }
+            if($articles['console'] == "Nintendo")
+            {
+            ?>
+            <i style="background-color: #24A723; color:white;" class="fab fa-nintendo"></i> 
+            <?php
+            }
+            if($articles['console'] == "PC")
+            {
+            ?>
+                <i style="background-color: #24A723; color:white;" class="fab fa-pc"></i>
+            <?php
+            }
+            ?>
+            <?= '<p>'.$articles['datH'].'</p>'; ?>
+        </div>
+        <div class="card-body">
+            <blockquote class="blockquote mb-0">
+                <p><?= $articles['contenu'] ?></p>
+            </blockquote>
+        </div>
+        </div>
+<?php      
+        }
+    }
+    $rqst->closeCursor(); 
 }
