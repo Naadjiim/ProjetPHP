@@ -24,11 +24,11 @@ else{
   <h1><i class="fas fa-newspaper" style="margin-top: 5%;"></i>Ajouter un article</h1>
 
 
-  <form action="action_page.php" method="post" style="margin-top: 2%;">
+  <form action="Article.php" method="post" style="margin-top: 2%;">
 
   <div class="container" style="width: 45%; float: right;">
     <label for="uname"><b>Titre</b></label>
-    <input type="text" placeholder="Entre un Titre" name="uname" required>
+    <input type="text" placeholder="Entre un Titre" name="titre" required>
 
     <label class="container" style="background-color: #0c7ebd; color:white;">
   <input type="checkbox" checked="checked">
@@ -55,7 +55,7 @@ else{
   
  
 
-  <textarea style="width: 50%;" id="basic-example">
+  <textarea style="width: 50%;" id="basic-example" name="contenu">
   </textarea>
 
 
