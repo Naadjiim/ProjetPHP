@@ -105,11 +105,13 @@ if(isset($_POST['modifier'], $_POST['email']))
 {
 	if(preg_match("/^([\w-\.]+)@((?:[\w]+\.)+)([a-zA-Z]{2,4})/i", $_POST['email']))
 	{
+
+		$password = password_hash($_POST['spsw'], PASSWORD_DEFAULT);
        
     
 		require_once 'bdd.php';
 		$rqst = $bdd->prepare('UPDATE `membres` SET email=? , pseudo= ? , password = ? WHERE id = ?');
-    	$rqst->execute(array($_POST['email'], $_POST['pseudo'], $_POST['spsw'], $_POST['id']));
+    	$rqst->execute(array($_POST['email'], $_POST['pseudo'], $password, $_POST['id']));
 		$rqst->closeCursor(); 
 		
 	}
