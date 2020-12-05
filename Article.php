@@ -3,16 +3,13 @@
     session_start();
 if($_POST['ajoutArticle'])
 {
-
-    $array = [];
-    $array = $_POST['console'];
     require_once 'bdd.php';
     $rqst = $bdd->prepare('INSERT INTO `articles`(`titre`, `contenu`, `console`, `pseudo`,  `dateHeure`) 
                            VALUES (:titre, :contenu, :console, :pseudo, NOW())');
     $rqst->execute(array(
       'titre' => $_POST['titre'],
             'contenu' => $_POST['contenu'],
-            'console' => $array,
+            'console' => $arr,
             'pseudo' => $_SESSION['pseudo']
     ));
     $rqst->closeCursor();
@@ -34,15 +31,20 @@ if(isset($_POST['addCom']) && isset($_GET['idArticle']))
 function vue()
 {
     require_once'bdd.php';
-    $rqst = $bdd->query('SELECT *, DATE_FORMAT(dateHeure, "%d/%m/%Y / %H:%i") datH FROM articles ORDER BY id DESC');
+    $rqst = $bdd->prepare('SELECT *, DATE_FORMAT(dateHeure, "%d/%m/%Y / %H:%i") datH FROM articles ORDER BY id DESC');
+    $rqst->execute(); 
+    $array = $rqst->fetch(PDO::FETCH_ASSOC);
+    print_r($array['console']);
+    $id = 1;
     while($articles = $rqst->fetch())
     {
+       
         ?>
-            <div class="card" style="margin-bottom: 2%;">
+            <div class="card" id="<?= $id++?>" style="margin-bottom: 2%;">
         <?php
   
         ?>
-        <div class="card-header" style=" font-size: 30px;">
+        <div class="card-header">
             <?php 
             echo $articles['titre'].' | <b>'.$articles['pseudo'].'</b> | ';
             if($articles['console'] == "Playstation")

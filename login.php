@@ -22,11 +22,6 @@
 
         <label for="psw"><b>Mot de passe</b></label>
         <input type="password" placeholder="Entrez un mot de passe" name="psw" required>
-        
-        <label>
-          <input type="checkbox" checked="checked" name="remember"> Se souvenir de moi
-        </label>
-
         <button type="submit" name="login">Connexion</button>
       </div>
 

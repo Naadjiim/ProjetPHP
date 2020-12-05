@@ -15,7 +15,7 @@ if(isset($_SESSION['pseudo']))
 </head>
 
 <body>
-
+  
   <h1><i class="fas fa-newspaper" style="margin-top: 5%;"></i>
     <?php if(isset($_GET['erreurAjout']))
     {
@@ -34,60 +34,60 @@ if(isset($_SESSION['pseudo']))
 
   <form action="Article.php" method="post" style="margin-top: 2%;">
 
-    <div class="container" style="width: 45%; float: right;">
-      <label for="uname"><b>Titre</b></label>
-      <input type="text" placeholder="Entrez un Titre" name="titre" required>
+  <div class="container" style="width: 45%; float: right;">
+    <label for="uname"><b>Titre</b></label>
+    <input type="text" placeholder="Entre un Titre" name="titre" required>
 
-      <label class="container" style="background-color: #0c7ebd; color:white;">
-        <input type="checkbox" name="console[]" value="play">
-        <span class="checkmark"></span><i class="fab fa-playstation"></i> Playstation
-      </label>
+    <label class="container" style="background-color: #0c7ebd; color:white;">
+  <input type="checkbox" name="play" checked="checked">
+  <span class="checkmark"></span><i class="fab fa-playstation"></i>  Playstation
+</label>
 
-      <label class="container" style="background-color: #24A723; color:white;">
-        <input type="checkbox" name="console[]" value="xbox">
-        <span class="checkmark"></span><i class="fab fa-xbox"></i> Xbox
-      </label>
+<label class="container" style="background-color: #24A723; color:white;">
+  <input type="checkbox" name="xbox">
+  <span class="checkmark"></span><i class="fab fa-xbox"></i>  Xbox
+</label>
 
-      <label class="container" style="background-color: #D10018; color:white;">
-        <input type="checkbox" name="console[]" value="nintendo">
-        <span class="checkmark"></span><i class="fas fa-gamepad"></i> Nintendo
-      </label>
+<label class="container" style="background-color: #D10018; color:white;">
+  <input type="checkbox" name="nintendo">
+  <span class="checkmark"></span><i class="fas fa-gamepad"></i>  Nintendo
+</label>
 
-      <label class="container" style="background-color: #1D1D1D; color:white;">
-        <input type="checkbox" name="console[]" value="PC">
-        <span class="checkmark"></span><i class="fas fa-desktop"></i> PC
-      </label>
+<label class="container" style="background-color: #1D1D1D; color:white;">
+  <input type="checkbox" name="pc">
+  <span class="checkmark"></span><i class="fas fa-desktop"></i>  PC
+</label>
 
-    </div>
+  </div>
 
+  
+ 
 
-
-
-    <textarea style="width: 50%;" id="basic-example" name="contenu">
+  <textarea style="width: 50%;" id="basic-example" name="contenu">
   </textarea>
 
 
-    <button class="button" type="submit" name="ajoutArticle"><span><i class="fas fa-plus"></i> Publier</span></button>
-    </forma>
+  <button class="button" type="submit" name="ajoutArticle"><span><i class="fas fa-plus"></i> Publier</span></button>
+  </form>
 
-
-    <script>
-      tinymce.init({
-        selector: 'textarea#basic-example',
-        height: 500,
-        menubar: false,
-        plugins: [
-          'advlist autolink lists link image charmap print preview anchor',
-          'searchreplace visualblocks code fullscreen',
-          'insertdatetime media table paste code help wordcount'
-        ],
-        toolbar: 'undo redo | formatselect | ' +
-          'bold italic backcolor | alignleft aligncenter ' +
-          'alignright alignjustify | bullist numlist outdent indent | ' +
-          'removeformat | help',
-        content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }'
-      });
-    </script>
+  
+  <script>
+    tinymce.init({
+      selector: 'textarea#basic-example',
+      height: 500,
+      menubar: false,
+      plugins: [
+        'advlist autolink lists link image charmap print preview anchor',
+        'searchreplace visualblocks code fullscreen',
+        'insertdatetime media table paste code help wordcount'
+      ],
+      toolbar: 'undo redo | formatselect | ' +
+        'bold italic backcolor | alignleft aligncenter ' +
+        'alignright alignjustify | bullist numlist outdent indent | ' +
+        'removeformat | help',
+      content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }'
+    });
+  </script>
 </body>
 
 </html>
