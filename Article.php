@@ -27,10 +27,9 @@ function vue()
     require_once 'bdd.php';
     $rqstArticle = $bdd->prepare('SELECT *, DATE_FORMAT(dateHeure, "%d/%m/%Y / %H:%i") datH FROM articles ORDER BY id DESC');
     $rqstArticle->execute();
-    $articles = $rqstArticle->fetch();
-    $consoles = json_decode($articles['console']);
-    while($articles)
+    while($articles = $rqstArticle->fetch())
     {
+        $consoles = json_decode($articles['console']);
 ?>
         <div class="card" style="margin-bottom: 2%;">
             <div class="card-header" style="font-size: 30px;">
@@ -100,6 +99,6 @@ function vue()
 <?php       
     }
     $rqstArticle->closeCursor();
-    $rqstCom->closeCursor(); 
+    // $rqstCom->closeCursor(); 
  
 }
