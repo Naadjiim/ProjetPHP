@@ -51,7 +51,7 @@ function vue()
     {
         $consoles = json_decode($articles['console']);
 ?>
-        <div class="card" style="margin-bottom: 2%;">
+        <div class="card" style="margin-top: 100px;">
             <div class="card-header" style="font-size: 20px;">
                 <center>
                     <?= $articles['titre'].' | <b>'.$articles['pseudo'].'</b> | '.$articles['datH'];
@@ -127,23 +127,7 @@ function vue()
             </div>
         </div>
         
-        <script>
-        //* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
-            var dropdown = document.getElementsByClassName("dropdown-btn");
-            var i;
 
-            for (i = 0; i < dropdown.length; i++) {
-            dropdown[i].addEventListener("click", function() {
-                this.classList.toggle("active");
-                var dropdownContent = this.nextElementSibling;
-                if (dropdownContent.style.display === "block") {
-                dropdownContent.style.display = "none";
-                } else {
-                dropdownContent.style.display = "block";
-                }
-            });
-            }
-        </script>
 <?php       
     }
     $rqstArticle->closeCursor();
