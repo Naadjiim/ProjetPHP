@@ -51,13 +51,13 @@ function vue()
                 if($consoles->ntd == "nintendo")
                 {
                 ?>
-                <i style="background-color: #24A723; color:white;" class="fab fa-gamepad"></i> 
+                <i style="background-color: #D10018; color:white;" class="fas fa-gamepad"></i> 
                 <?php
                 }
                 if($consoles->pc == "pc")
                 {
                 ?>
-                    <i style="background-color: #24A723; color:white;" class="fab fa-pc"></i>
+                    <i style="background-color: #1D1D1D; color:white;" class="fas fa-desktop"></i>
                 <?php
                 }
                 ?>
@@ -73,12 +73,13 @@ function vue()
                 <p> <?= $coms['datH'];?></p>
                 <p><?= $coms['commentaire'];?></p>
                 <form action="Article.php" method="post">
-                    <textarea name="commentaire" cols="160" rows="3"></textarea>
+                    <textarea name="commentaire" cols="100%" rows="3"></textarea>
                     <input type="text" value=<?= $articles['id']; ?> name="idArticle" hidden />
                     <button type="submit" name="envoyer">Envoyer</button>
                 </form>
             </div>
         </div>
+        
         <script>
         //* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
             var dropdown = document.getElementsByClassName("dropdown-btn");
