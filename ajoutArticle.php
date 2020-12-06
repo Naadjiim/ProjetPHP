@@ -14,7 +14,7 @@ if(isset($_SESSION['pseudo']))
   </head>
   <body>
     <header>
-      <?php include 'bootstrap.php'; ?>
+      <?php include 'links.php'; ?>
       <?php include 'navbar.php'; ?>
       <?php include 'login.php'; ?>
     </header>

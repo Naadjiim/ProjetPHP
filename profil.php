@@ -15,7 +15,7 @@ if(isset($_SESSION['pseudo']))
   <body>
     <header>
       <?php include 'navbar.php' ?>
-      <?php include 'bootstrap.php' ?>
+      <?php include 'links.php' ?>
     </header>
     <div class="profil">
       <img src="image/avatar.png" alt="John" style="width:10%" />

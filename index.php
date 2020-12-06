@@ -9,11 +9,13 @@
     <meta http-equiv="refresh" content="30" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link rel="icon" type="icon/ico" href="image/favicon.ico" />
+    <link rel="stylesheet" href="css/index.css">
+
     <title>Accueil</title>
   </head>
   <body>
     <header>
-        <?php include 'bootstrap.php'; ?>
+        <?php include 'links.php'; ?>
         <?php include 'navbar.php' ?>
         <?php include 'login.php' ?>
     </header>

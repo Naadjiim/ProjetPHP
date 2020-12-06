@@ -1,13 +1,5 @@
-<!DOCTYPE html>
-<html lang="fr">
-  <head>
-    <link rel="stylesheet" href="css/index.css">
-    <title>Jeux vidéo</title>
-  </head>
   <body>
-    <header>
-      <?php include 'bootstrap.php' ?>
-    </header>
+      <?php include 'links.php' ?>
     <div id="id01" class="modal">
       <form class="modal-content animate" action="data_processing.php" method="post">
         <div class="imgcontainer">
@@ -56,4 +48,3 @@
       </form>
     </div>
   </body>
-</html>

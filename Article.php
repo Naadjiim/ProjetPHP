@@ -50,7 +50,7 @@ function vue()
     require_once 'bdd.php';
     $rqstArticle = $bdd->prepare('SELECT *, DATE_FORMAT(dateHeure, "%d/%m/%Y %H:%i") datH FROM articles ORDER BY id DESC');
     $rqstArticle->execute();
-    include 'bootstrap.php';
+    include 'links.php';
     while($articles = $rqstArticle->fetch())
     {
         $consoles = json_decode($articles['console']);

@@ -1,4 +1,4 @@
-<?php include 'bootstrap.php'; ?>
+<?php include 'links.php'; ?>
 <div class="navbar" id="navbar">
   <a class="active" href="index.php"><i class="fa fa-fw fa-home"></i> Accueil</a>
     <?php
