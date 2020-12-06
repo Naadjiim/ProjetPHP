@@ -2,8 +2,8 @@
 // Inscription
 if(isset($_POST['signUp'], $_POST['email']))
 {
-	if(preg_match("/^([\w-\.]+)@((?:[\w]+\.)+)([a-zA-Z]{2,4})/i", $_POST['email']))
-	{
+	// if(preg_match("/^([\w-\.]+)@((?:[\w]+\.)+)([a-zA-Z]{2,4})/i", $_POST['email']))
+	// {
 		require_once 'bdd.php';
     	$rqst = $bdd->prepare('SELECT COUNT(*) FROM membres WHERE pseudo = ? OR email = ?');
     	$rqst->execute(array($_POST['pseudo'], $_POST['email']));
@@ -34,7 +34,7 @@ if(isset($_POST['signUp'], $_POST['email']))
     	        echo '<html><center>Inscription réussie</html></center>';
     	    }   
     	}
-	}
+	// }
 }
 // Connexion
 if(isset($_POST['login'], $_POST['pseudo']))
@@ -76,7 +76,7 @@ if(isset($_POST['login'], $_POST['pseudo']))
 			}
 			else
 			{
-				header('location: index.php?succes0.');
+				header('location: index.php');
 			}
 		}
 
@@ -84,7 +84,7 @@ if(isset($_POST['login'], $_POST['pseudo']))
 
 
 
-// Modifier
+// Modifier les paramètres du compte
 if(isset($_POST['modifier'], $_POST['email']))
 {
 	if(preg_match("/^([\w-\.]+)@((?:[\w]+\.)+)([a-zA-Z]{2,4})/i", $_POST['email']))

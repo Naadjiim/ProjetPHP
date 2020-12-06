@@ -2,8 +2,8 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <link rel="icon" type="icon/ico" href="image/favicon.ico" />
     <title>Accueil</title>
-
   </head>
   <body>
     <header>
@@ -17,12 +17,9 @@
       <button style="background-color: #D10018; color:white;" class="tablinks" onclick="console(event, 'Nintedo')"><i class="fas fa-gamepad"></i>  Nintedo</button>
       <button style="background-color: #1D1D1D; color:white;" class="tablinks" onclick="console(event, 'PC')"><i class="fas fa-desktop"></i>  PC</button>
     </div>
-
     <!-- Page content -->
     <div class="home">
-
       <h1>Nouveauté</h1> 
-
       <?php
       if(isset($_SESSION['pseudo']))
       {
@@ -30,16 +27,13 @@
         <button class="button" onclick="location.href='addArticle.php';"><span><i class="fas fa-plus"></i> Publier un article</span></button>
       <?php
       }
-
-      else{
-        ?>
-        <button class="button" onclick="document.getElementById('id01').style.display='block'"><span><i class="fas fa-plus"></i> Publier un article</span></button>
-
-        <?php
-      }
-      if(isset($_GET['ajoutArticle']))
+      else
       {
-        echo '<p>Ajout de l\'article réussie</p>';
+      ?>
+        <button class="button" onclick="document.getElementById('id01').style.display='block'">
+          <span><i class="fas fa-plus"></i> Publier un article</span>
+        </button>
+      <?php
       }
       if(isset($_GET['ajoutCom']))
       {

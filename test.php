@@ -37,4 +37,5 @@ if(isset($_GET['diffPsw']))
 {
     echo '<p>Mot de passe différent</p>';
 }
+
 ?>
