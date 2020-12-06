@@ -42,7 +42,7 @@
         <h1>Inscription</h1>
         <hr>
         <label for="email"><b>Email</b></label>
-        <input type="email" placeholder="Entrez une adresse Email" name="email" required><br />
+        <input type="text" placeholder="Entrez une adresse Email" name="email" required><br />
 
         <label for="pseudo"><b>Pseudo</b></label>
         <input type="text" placeholder="Entrez un pseudo" name="pseudo" required>
@@ -53,8 +53,8 @@
         <label for="psw-repeat"><b>Confirmer le mot de me passe</b></label>
         <input type="password" placeholder="Confirmez votre mot de passe" name="psw-repeat" required>
         <div class="clearfix">
-          <button type="button" onclick="document.getElementById('id02').style.display='none'" class="cancelbtn">Annuler</button>
-          <button type="submit" class="signupbtn" name="signUp">Inscription</button>
+        <button type="submit" class="signupbtn" name="signUp">Inscription</button>
+        <button type="button" onclick="document.getElementById('id02').style.display='none'" class="cancelbtn">Annuler</button>
         </div>
       </div>
     </form>
