@@ -127,6 +127,7 @@ function vue()
             </div>
         </div>
         
+        
 
 <?php       
     }
