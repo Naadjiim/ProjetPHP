@@ -6,6 +6,7 @@ if(isset($_SESSION['pseudo']))
 <!DOCTYPE html>
 <html lang="fr">
   <head>
+    <title>Ajout d'article</title>
     <meta charset="UTF-8">
     <link rel="icon" type="icon/ico" href="image/favicon.ico" />
     <script src="https://cdn.tiny.cloud/1/7tbdaidhth9ngax0okbjf5rwrd69ikinx7powbblw82ya2gt/tinymce/5/tinymce.min.js"
@@ -21,7 +22,7 @@ if(isset($_SESSION['pseudo']))
     <h1><i class="fas fa-newspaper" style="margin-top: 5%;"></i>Ajouter un article</h1>
     <form action="Article.php" method="post" style="margin-top: 2%;">
       <div class="container" style="width: 45%; float: right;">
-        <label for="titre"><b>Titre</b></label>
+        <label ><b>Titre</b></label>
         <input type="text" placeholder="Entrez un Titre" name="titre" required />
 
         <label class="container" style="background-color: #0c7ebd; color:white;">

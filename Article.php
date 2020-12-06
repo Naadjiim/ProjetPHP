@@ -129,7 +129,7 @@ function vue()
                 {
                 ?>
                     <form action="Article.php" method="post">
-                        <textarea name="commentaire" cols="30%" rows="3"></textarea>
+                        <textarea name="commentaire" cols="30" rows="3"></textarea>
                         <input type="text" value=<?= $articles['id']; ?> name="idArticle" hidden />
                         <button type="submit" name="envoyer">Envoyer</button>
                     </form>

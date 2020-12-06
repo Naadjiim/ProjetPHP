@@ -1,4 +1,4 @@
-  <body>
+  
       <?php include 'links.php' ?>
     <div id="id01" class="modal">
       <form class="modal-content animate" action="data_processing.php" method="post">
@@ -47,4 +47,4 @@
         </div>
       </form>
     </div>
-  </body>
+  
