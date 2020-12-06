@@ -42,7 +42,7 @@
         <h1>Inscription</h1>
         <hr>
         <label for="email"><b>Email</b></label>
-        <input type="email" placeholder="Entrez une adresse Email" name="email" required><br />
+        <input type="text" placeholder="Entrez une adresse Email" name="email" required><br />
 
         <label for="pseudo"><b>Pseudo</b></label>
         <input type="text" placeholder="Entrez un pseudo" name="pseudo" required>
