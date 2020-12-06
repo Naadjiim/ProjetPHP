@@ -30,6 +30,13 @@
         <button class="button" onclick="location.href='addArticle.php';"><span><i class="fas fa-plus"></i> Publier un article</span></button>
       <?php
       }
+
+      else{
+        ?>
+        <button class="button" onclick="document.getElementById('id01').style.display='block'"><span><i class="fas fa-plus"></i> Publier un article</span></button>
+
+        <?php
+      }
       if(isset($_GET['ajoutArticle']))
       {
         echo '<p>Ajout de l\'article réussie</p>';

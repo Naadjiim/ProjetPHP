@@ -3,14 +3,15 @@
     session_start();
 if(isset($_POST['ajoutArticle']))
 {
- 
+    
+    $array =[$_POST['play'], $_POST['xbox'], $_POST['nintendo'], $_POST['PC']];
     require_once 'bdd.php';
     $rqst = $bdd->prepare('INSERT INTO `articles`(`titre`, `contenu`, `console`, `pseudo`,  `dateHeure`) 
                            VALUES (:titre, :contenu, :console, :pseudo, NOW())');
     $rqst->execute(array(
       'titre' => $_POST['titre'],
             'contenu' => $_POST['contenu'],
-            'console' => array($_POST['play'], $_POST['xbox'], $_POST['nintendo'], $_POST['PC']),
+            'console' => $array,
             'pseudo' => $_SESSION['pseudo']
     ));
     $rqst->closeCursor();
