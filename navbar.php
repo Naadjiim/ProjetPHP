@@ -6,6 +6,7 @@
     {
 
       ?>
+      <a href="profil.php"><i class="fas fa-sign-out-alt"></i></a>
       <a href="profil.php"><i class="fa fa-fw fa-user"></i><?= $_SESSION['pseudo'] ?></a>
     <?php
     }
