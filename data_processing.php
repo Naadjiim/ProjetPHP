@@ -3,19 +3,29 @@
 if(isset($_POST['inscription'], $_POST['email']))
 {
 	require_once 'bdd.php';
-    $rqst = $bdd->prepare('SELECT COUNT(*) FROM membres WHERE pseudo = ? OR email = ?');
-    $rqst->execute(array($_POST['pseudo'], $_POST['email']));
-    $emailOrPseudo = $rqst->fetch();
-    $rqst->closeCursor(); 
-    if(!($emailOrPseudo[0] == 0))
+	// Pseudo
+    $rqst = $bdd->prepare('SELECT COUNT(*) FROM membres WHERE pseudo = ?');
+    $rqst->execute(array($_POST['pseudo']));
+    $pseudo = $rqst->fetch();
+	$rqst->closeCursor();
+	// Email
+	$rqst = $bdd->prepare('SELECT COUNT(*) FROM membres WHERE email = ?');
+	$rqst->execute(array($_POST['email']));
+	$email = $rqst->fetch(); 
+	$rqst->closeCursor();
+    if(!($pseudo[0] == 0))
     {
-    	echo '<html><center>Adresse mail ou pseudo utilisée<br /></center></html>';
-    }
+    	header('location: index.php?pseudoUtil');
+	}
+	elseif(!($email[0] == 0))
+    {
+    	header('location: index.php?emailUtil');
+	}
     else
     {
     	if($_POST['psw'] != $_POST['psw-repeat'])
     	{
-    	    echo '<html><center>Le mot de passe doit être le même que celui de la confirmation</center></html>';
+    	    header('location: index.php?diffPsw');
     	}
     	else
     	{
@@ -43,7 +53,7 @@ if(isset($_POST['connexion'], $_POST['pseudo']))
 	$passCorrect = password_verify($_POST['psw'], $result['password']);
 	if (!$result)
 	{
-		echo '<center>Mauvais identifiant ou mot de passe. <br /> <a href="index.php">Retour sur la page de connexion</a></p></center>';
+		header('location: index.php?incorrect');
 	}
 	else
 	{
@@ -69,23 +79,26 @@ if(isset($_POST['connexion'], $_POST['pseudo']))
 		}
 		else
 		{
-			header('location: index.php');
+			header('location: index.php?incorrect');
 		}
 	}
-
 }
 // Modifier les paramètres du compte
-if(isset($_POST['modifier'], $_POST['email']))
+if(isset($_POST['modifier']))
 {
-	if(preg_match("/^([\w-\.]+)@((?:[\w]+\.)+)([a-zA-Z]{2,4})/i", $_POST['email']))
-	{
-		$password = password_hash($_POST['spsw'], PASSWORD_DEFAULT);
-		require_once 'bdd.php';
-		$rqst = $bdd->prepare('UPDATE `membres` SET email=? , pseudo= ? , password = ? WHERE id = ?');
-    	$rqst->execute(array($_POST['email'], $_POST['pseudo'], $password, $_POST['id']));
-		$rqst->closeCursor(); 
-		
-	}
+    if($_POST['psw'] != $_POST['psw-repeat'])
+    {
+        header('location: profil.php?diffPsw');
+    }
+    else
+    {
+        session_start();
+        require_once 'bdd.php';
+        $rqst = $bdd->prepare('UPDATE `membres` SET `pseudo` = ?, email = ?, `password` = ? WHERE id = ?');
+        $rqst->execute(array($_POST['pseudo'],$_POST['email'], password_hash($_POST['psw'], PASSWORD_DEFAULT), $_SESSION['id']));
+        $rqst->closeCursor();
+        header('location: deconnexion.php');
+    }
 }
 // Supprimer le compte
 if(isset($_GET['idMembre']))
@@ -96,4 +109,3 @@ if(isset($_GET['idMembre']))
 	$rqst->closeCursor();
 	header('location: profil.php');
 }
-

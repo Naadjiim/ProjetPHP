@@ -1,6 +1,6 @@
 <?php
-// Ajout d'article 
 session_start();
+// Ajout d'article 
 if(isset($_POST['ajoutArticle'], $_SESSION['pseudo']))
 {
     $consoles =['ps'=>$_POST['play'], 'xb'=>$_POST['xbox'], 'ntd'=>$_POST['nintendo'], 'pc'=>$_POST['pc']];
@@ -12,6 +12,7 @@ if(isset($_POST['ajoutArticle'], $_SESSION['pseudo']))
     $rqst->closeCursor();
     header('location: index.php');
 }
+// Ajout de commentaire
 if(isset($_POST['envoyer'], $_POST['idArticle']))
 {
     require_once 'bdd.php';
@@ -39,32 +40,30 @@ if($_SESSION['role'] == 'admin' && isset($_GET['idCom']))
     $rqst->closeCursor();
     header('location: index.php');
 }
-// Affichage d'articles et commentaires
+// Affichage d'articles et des commentaires
 function vue()
 {
     require_once 'bdd.php';
     $rqstArticle = $bdd->prepare('SELECT *, DATE_FORMAT(dateHeure, "%d/%m/%Y %H:%i") datH FROM articles ORDER BY id DESC');
     $rqstArticle->execute();
     include 'bootstrap.php';
-
     while($articles = $rqstArticle->fetch())
     {
         $consoles = json_decode($articles['console']);
 ?>
         <div class="card" style="margin-top: 100px;">
             <div class="card-header" style="font-size: 20px;">
-                <center>
-                    <?= $articles['titre'].' | <b>'.$articles['pseudo'].'</b> | '.$articles['datH'];
-                    ?>
+                    <?= $articles['titre'].' | <b>'.$articles['pseudo'].'</b> | '.$articles['datH']; ?>
                     <?php 
                     if($_SESSION['role'] == 'admin')
                     {
                     ?>
-                        <a href="Article.php?idArticle=<?= $articles['id']; ?>"><i style="color: #2b2b2b;" class="fas fa-trash"></i></a>
+                        <a href="Article.php?idArticle=<?= $articles['id']; ?>">
+                            <i style="color: #2b2b2b;" class="fas fa-trash"></i>
+                        </a>
                     <?php
                     }
                     ?>
-                </center>
                 <?php
                 if($consoles->ps == "play")
                 {
@@ -97,38 +96,44 @@ function vue()
                     <p><?= $articles['contenu'] ?></p>
                 </blockquote>
             </div>
-            <button class="dropdown-btn">Commentaire<i class="fa fa-caret-down"></i></button>
+            <button class="dropdown-btn">Commentaires<i class="fa fa-caret-down"></i></button>
             <div class="dropdown-container">
-            <?php
-            $rqstCom = $bdd->prepare('SELECT *, DATE_FORMAT(dateHeure, "%d/%m/%Y / %H:%i") datH FROM commentaires WHERE idArticle = ?');
-            $rqstCom->execute(array($articles['id']));
-            while($coms = $rqstCom->fetch())
-            {
-            ?>
-                <h3>
-                    <?php 
-                    echo $coms['pseudo'].'|'.$coms['datH'];
-                    if($_SESSION['role'] == 'admin')
-                    {
-                    ?>
-                        <a href="Article.php?idCom=<?= $coms['id']; ?>" ><i style="color: white;" class="fas fa-trash"></i></a>
-                    <?php
-                    }
-                    ?>
-                </h3>
-                <p><?= $coms['commentaire'];?></p>
-            <?php
-            }
-            $rqstCom->closeCursor(); 
-            ?>
-                <form action="Article.php" method="post">
-                    <textarea name="commentaire" cols="100%" rows="3"></textarea>
-                    <input type="text" value=<?= $articles['id']; ?> name="idArticle" hidden />
-                    <button type="submit" name="envoyer">Envoyer</button>
-                </form>
+                <?php
+                $rqstCom = $bdd->prepare('SELECT *, DATE_FORMAT(dateHeure, "%d/%m/%Y / %H:%i") datH FROM commentaires WHERE idArticle = ?');
+                $rqstCom->execute(array($articles['id']));
+                while($coms = $rqstCom->fetch())
+                {
+                ?>
+                    <h3>
+                        <?php 
+                        echo '<b>'.$coms['pseudo'].'</b> | '.$coms['datH'];
+                        if($_SESSION['role'] == 'admin')
+                        {
+                        ?>
+                            <a href="Article.php?idCom=<?= $coms['id']; ?>" >
+                                <i style="color: white;" class="fas fa-trash"></i>
+                            </a>
+                        <?php
+                        }
+                        ?>
+                    </h3>
+                    <p><?= $coms['commentaire'];?></p>
+                <?php
+                }
+                $rqstCom->closeCursor(); 
+                if(isset($_SESSION['pseudo']))
+                {
+                ?>
+                    <form action="Article.php" method="post">
+                        <textarea name="commentaire" cols="30%" rows="3"></textarea>
+                        <input type="text" value=<?= $articles['id']; ?> name="idArticle" hidden />
+                        <button type="submit" name="envoyer">Envoyer</button>
+                    </form>
+                <?php
+                }
+                ?>
             </div>
         </div>
-
 <?php       
     }
     $rqstArticle->closeCursor();
