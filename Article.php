@@ -8,7 +8,7 @@ if(isset($_POST['ajoutArticle'], $_SESSION['pseudo']))
     require_once 'bdd.php';
     $rqst = $bdd->prepare('INSERT INTO `articles`(`titre`, `contenu`, `console`, `pseudo`,  `dateHeure`) 
         VALUES (?, ?, ?, ?, NOW())');
-    $rqst->execute(array($_POST['titre'], $_POST['contenu'], $consJson, $_SESSION['pseudo']));
+    $rqst->execute(array(htmlspecialchars($_POST['titre']), $_POST['contenu'], $consJson, $_SESSION['pseudo']));
     $rqst->closeCursor();
     header('location: index.php');
 }
@@ -18,7 +18,11 @@ if(isset($_POST['envoyer'], $_POST['idArticle']))
     require_once 'bdd.php';
     $rqst = $bdd->prepare('INSERT INTO `commentaires`(`commentaire`, `pseudo`, `idArticle`, `dateHeure`) 
         VALUES (?, ?, ?, NOW())');
-    $rqst->execute(array($_POST['commentaire'], $_SESSION['pseudo'], $_POST['idArticle']));
+    $rqst->execute(array(htmlspecialchars(
+        $_POST['commentaire']),
+        $_SESSION['pseudo'], 
+        htmlspecialchars($_POST['idArticle'])
+    ));
     $rqst->closeCursor();
     header('location: index.php');
 }
@@ -27,7 +31,7 @@ if($_SESSION['role'] == 'admin' && isset($_GET['idArticle']))
 {
     require_once 'bdd.php';
     $rqst = $bdd->prepare('DELETE FROM articles WHERE id = ?');
-    $rqst->execute(array($_GET['idArticle']));
+    $rqst->execute(array(htmlspecialchars($_GET['idArticle'])));
     $rqst->closeCursor();
     header('location: index.php');
 }
@@ -36,7 +40,7 @@ if($_SESSION['role'] == 'admin' && isset($_GET['idCom']))
 {
     require_once 'bdd.php';
     $rqst = $bdd->prepare('DELETE FROM commentaires WHERE id = ?');
-    $rqst->execute(array($_GET['idCom']));
+    $rqst->execute(array(htmlspecialchars($_GET['idCom'])));
     $rqst->closeCursor();
     header('location: index.php');
 }
@@ -100,7 +104,7 @@ function vue()
             <div class="dropdown-container">
                 <?php
                 $rqstCom = $bdd->prepare('SELECT *, DATE_FORMAT(dateHeure, "%d/%m/%Y / %H:%i") datH FROM commentaires WHERE idArticle = ?');
-                $rqstCom->execute(array($articles['id']));
+                $rqstCom->execute(array(htmlspecialchars($articles['id'])));
                 while($coms = $rqstCom->fetch())
                 {
                 ?>
