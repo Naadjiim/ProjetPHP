@@ -1,6 +1,6 @@
 <?php
 // Modification du compte
-if(isset($_POST['modifier']))
+if(isset($_POST['modifier']) && preg_match("/^([\w-\.]+)@((?:[\w]+\.)+)([a-zA-Z]{2,4})/i", $_POST['email']))
 {
     if($_POST['psw'] != $_POST['psw-repeat'])
     {
@@ -27,6 +27,7 @@ if(isset($_POST['modifier']))
         header('location: deconnexion.php');
     }
 }
+
 // if(password_verify($_POST['psw'] == $info['password'])){} else{ echo 'Mot de passe actuel incorrect' };
 if(isset($_GET['erreurPsw']))
 {
