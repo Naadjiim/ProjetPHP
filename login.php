@@ -18,7 +18,7 @@
 
       <div class="container">
         <label for="uname"><b>Pseudo</b></label>
-        <input type="text" placeholder="Entrez un pseudo" name="uname" required>
+        <input type="text" placeholder="Entrez un pseudo" name="pseudo" required>
 
         <label for="psw"><b>Mot de passe</b></label>
         <input type="password" placeholder="Entrez un mot de passe" name="psw" required>

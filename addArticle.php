@@ -57,20 +57,12 @@ if(isset($_SESSION['pseudo']))
         <input type="checkbox" name="PC" value="PC">
         <span class="checkmark"></span><i class="fas fa-desktop"></i> PC
       </label>
-
-  </div>
-
-  
- 
-
-  <textarea style="width: 50%;" id="basic-example" name="contenu">
-  </textarea>
-
-
-  <button class="button" type="submit" name="ajoutArticle"><span><i class="fas fa-plus"></i> Publier</span></button>
+    </div>
+    <textarea style="width: 50%;" id="basic-example" name="contenu">
+    </textarea>
+    <button class="button" type="submit" name="ajoutArticle"><span><i class="fas fa-plus"></i> Publier</span></button>
   </form>
 
-  
   <script>
     tinymce.init({
       selector: 'textarea#basic-example',

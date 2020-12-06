@@ -35,9 +35,6 @@
         <label for="pseudo"><b>Pseudo</b></label>
         <input type="text" value=<?= $_SESSION['pseudo']; ?> name="pseudo" required />
 
-        <label for="psw-actuel"><b>Mot de passe actuelle :</b></label>
-        <input type="password" name="psw-actuel" required />
-
         <label for="psw"><b>Nouveau mot de passe :</b></label>
         <input type="password" value=<?= $_SESSION['psw']; ?> name="psw" required />
 
