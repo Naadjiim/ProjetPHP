@@ -24,7 +24,7 @@
       if(isset($_SESSION['pseudo']))
       {
       ?>
-        <button class="button" onclick="location.href='addArticle.php';"><span><i class="fas fa-plus"></i> Publier un article</span></button>
+        <button class="button" onclick="location.href='ajoutArticle.php';"><span><i class="fas fa-plus"></i> Publier un article</span></button>
       <?php
       }
       else

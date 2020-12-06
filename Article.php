@@ -11,7 +11,7 @@ if(isset($_POST['ajoutArticle'], $_SESSION['pseudo']))
     $rqst->execute(array($_POST['titre'], $_POST['contenu'], $consJson, $_SESSION['pseudo']));
     $rqst->closeCursor();
     header('location: index.php');
-} 
+}
 if(isset($_POST['envoyer'], $_POST['idArticle']))
 {
     require_once 'bdd.php';
@@ -21,11 +21,29 @@ if(isset($_POST['envoyer'], $_POST['idArticle']))
     $rqst->closeCursor();
     header('location: index.php');
 }
-// Affichage d'articles
+// Suppression d'article
+if($_SESSION['role'] == 'admin' && isset($_GET['idArticle']))
+{
+    require_once 'bdd.php';
+    $rqst = $bdd->prepare('DELETE FROM articles WHERE id = ?');
+    $rqst->execute(array($_GET['idArticle']));
+    $rqst->closeCursor();
+    header('location: index.php');
+}
+// Suppression de commentaire
+if($_SESSION['role'] == 'admin' && isset($_GET['idCom']))
+{
+    require_once 'bdd.php';
+    $rqst = $bdd->prepare('DELETE FROM commentaires WHERE id = ?');
+    $rqst->execute(array($_GET['idCom']));
+    $rqst->closeCursor();
+    header('location: index.php');
+}
+// Affichage d'articles et commentaires
 function vue()
 {
     require_once 'bdd.php';
-    $rqstArticle = $bdd->prepare('SELECT *, DATE_FORMAT(dateHeure, "%d/%m/%Y / %H:%i") datH FROM articles ORDER BY id DESC');
+    $rqstArticle = $bdd->prepare('SELECT *, DATE_FORMAT(dateHeure, "%d/%m/%Y %H:%i") datH FROM articles ORDER BY id DESC');
     $rqstArticle->execute();
     while($articles = $rqstArticle->fetch())
     {
@@ -33,9 +51,19 @@ function vue()
 ?>
         <div class="card" style="margin-bottom: 2%;">
             <div class="card-header" style="font-size: 30px;">
-                <?php 
-                echo '<center>'.$articles['titre'].' | <b>'.$articles['pseudo'].'</b> | '.$articles['datH'].'</center>';
-                
+                <center>
+                    <?= $articles['titre'].' | <b>'.$articles['pseudo'].'</b> | '.$articles['datH'];
+                    ?>
+                    <?php 
+                    if($_SESSION['role'] == 'admin')
+                    {
+                    ?>
+                        <a href="Article.php?idArticle=<?= $articles['id']; ?>">Supprimer</a>
+                    <?php
+                    }
+                    ?>
+                </center>
+                <?php
                 if($consoles->ps == "play")
                 {
                 ?>
@@ -69,9 +97,26 @@ function vue()
             </div>
             <button class="dropdown-btn">Commentaire<i class="fa fa-caret-down"></i></button>
             <div class="dropdown-container">
-                <h3><?= $coms['pseudo'];?></h3>
-                <p> <?= $coms['datH'];?></p>
+            <?php
+            $rqstCom = $bdd->prepare('SELECT *, DATE_FORMAT(dateHeure, "%d/%m/%Y / %H:%i") datH FROM commentaires WHERE idArticle = ?');
+            $rqstCom->execute(array($articles['id']));
+            while($coms = $rqstCom->fetch())
+            {
+            ?>
+                <h3><?= $coms['pseudo'].'|'.$coms['datH']; ?></h3>
                 <p><?= $coms['commentaire'];?></p>
+                <?php
+                if($_SESSION['role'] == 'admin')
+                {
+                ?>
+                    <a href="Article.php?idCom=<?= $coms['id']; ?>">Supprimer</a>
+                <?php
+                }
+                ?>
+            <?php
+            }
+            $rqstCom->closeCursor(); 
+            ?>
                 <form action="Article.php" method="post">
                     <textarea name="commentaire" cols="160" rows="3"></textarea>
                     <input type="text" value=<?= $articles['id']; ?> name="idArticle" hidden />
@@ -99,6 +144,4 @@ function vue()
 <?php       
     }
     $rqstArticle->closeCursor();
-    // $rqstCom->closeCursor(); 
- 
 }

@@ -16,20 +16,7 @@ if(isset($_SESSION['pseudo']))
     <?php include 'navbar.php'; ?>
     <?php include 'login.php'; ?>
   </header>
-  <h1><i class="fas fa-newspaper" style="margin-top: 5%;"></i>
-    <?php if(isset($_GET['erreurAjout']))
-    {
-      echo '<span style="color: red;">Erreur lors de l\'ajout de l\'article</span>';
-    }
-    elseif(isset($_GET['ajoutArticle']))
-    {
-      echo '<span style="color: blue;">Ajout d\'article réussi</span>';
-    }
-    else{
-      echo 'Ajouter un article';
-    } 
-    ?>
-  </h1>
+  <h1><i class="fas fa-newspaper" style="margin-top: 5%;"></i>Ajouter un article</h1>
   <form action="Article.php" method="post" style="margin-top: 2%;">
 
     <div class="container" style="width: 45%; float: right;">

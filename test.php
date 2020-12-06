@@ -1,6 +1,6 @@
 <?php
-// Modification du compte
-if(isset($_POST['modifier']) && preg_match("/^([\w-\.]+)@((?:[\w]+\.)+)([a-zA-Z]{2,4})/i", $_POST['email']))
+// Modification du compte && preg_match("/^([\w-\.]+)@((?:[\w]+\.)+)([a-zA-Z]{2,4})/i", $_POST['email'])
+if(isset($_POST['modifier']))
 {
     if($_POST['psw'] != $_POST['psw-repeat'])
     {
@@ -10,19 +10,12 @@ if(isset($_POST['modifier']) && preg_match("/^([\w-\.]+)@((?:[\w]+\.)+)([a-zA-Z]
     {
         session_start();
         require_once 'bdd.php';
-        $pass = password_hash($_POST['psw'], PASSWORD_DEFAULT);
-        $rqst = $bdd->prepare('SELECT * FROM membres WHERE id = ?');
-        $rqst->execute(array($_SESSION['id']));
-        $rq = $rqst->fetch();              
-        $rqst->closeCursor(); 
-        $rqst = $bdd->prepare('UPDATE `membres` SET `pseudo` = :pseudo, `email` = :email, `password` = :password 
-            WHERE id = :id');
-        $rqst->execute(array(
-            'id' => $_SESSION['id'], 
-            'pseudo' => $_POST['pseudo'], 
-            'email' => $_POST['email'], 
-            'password' => $pass
-        ));
+        // $rqst = $bdd->prepare('SELECT * FROM membres WHERE id = ?');
+        // $rqst->execute(array($_SESSION['id']));
+        // $rqst = $rqst->fetch();              
+        // $rqst->closeCursor(); 
+        $rqst = $bdd->prepare('UPDATE `membres` SET `pseudo` = ?, email = ?, `password` = ? WHERE id = ?');
+        $rqst->execute(array($_POST['email'], $_POST['pseudo'], password_hash($_POST['psw'], PASSWORD_DEFAULT), $_SESSION['id']));
         $rqst->closeCursor();
         header('location: deconnexion.php');
     }

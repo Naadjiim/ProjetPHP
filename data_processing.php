@@ -1,6 +1,6 @@
 <?php
 // Inscription
-if(isset($_POST['signUp'], $_POST['email']))
+if(isset($_POST['inscription'], $_POST['email']))
 {
 	// if(preg_match("/^([\w-\.]+)@((?:[\w]+\.)+)([a-zA-Z]{2,4})/i", $_POST['email']))
 	// {
@@ -22,7 +22,7 @@ if(isset($_POST['signUp'], $_POST['email']))
     	    else
     	    {
     	        $rqst = $bdd->prepare('INSERT INTO membres (`pseudo`, `email`, `password`, `role`, `dateInscription`) 
-    	                                VALUES (:pseudo, :email, :password, :role, NOW())');
+    	            VALUES (:pseudo, :email, :password, :role, NOW())');
     	        $rqst->execute(array(
     	            'pseudo' => $_POST['pseudo'],
     	            'email' => $_POST['email'],
@@ -31,22 +31,18 @@ if(isset($_POST['signUp'], $_POST['email']))
     	        ));
     	        $rqst->closeCursor();
     	        header('location: index.php');
-    	        echo '<html><center>Inscription réussie</html></center>';
     	    }   
     	}
 	// }
 }
 // Connexion
-if(isset($_POST['login'], $_POST['pseudo']))
+if(isset($_POST['connexion'], $_POST['pseudo']))
 {
-
 		require_once 'bdd.php';
-		//  Récupération de l'utilisateur et de son mot de passe
 		$rqst = $bdd->prepare('SELECT id, pseudo, email, password, role FROM membres WHERE pseudo = ?');
 		$rqst->execute(array($_POST['pseudo']));
 		$result = $rqst->fetch();
     	$rqst->closeCursor();
-		// Comparaison du pass envoyé via le formulaire avec la base
 		$passCorrect = password_verify($_POST['psw'], $result['password']);
 		if (!$result)
 		{
@@ -61,7 +57,7 @@ if(isset($_POST['login'], $_POST['pseudo']))
 				$_SESSION['pseudo'] = $result['pseudo'];
 				$_SESSION['role'] = $result['role'];
 				$_SESSION['email'] = $result['email'];
-				$_SESSION['psw'] = $result['psw'];
+				$_SESSION['psw'] = $_POST['psw'];
 				header('location: index.php');
 			}
 			elseif($passCorrect && $result['role'] == 'membre')
@@ -71,7 +67,7 @@ if(isset($_POST['login'], $_POST['pseudo']))
 				$_SESSION['pseudo'] = $result['pseudo'];
 				$_SESSION['role'] = $result['role'];
 				$_SESSION['email'] = $result['email'];
-				$_SESSION['psw'] = $result['psw']; 
+				$_SESSION['psw'] = $_POST['psw']; 
 				header('location: index.php');
 			}
 			else
@@ -81,23 +77,26 @@ if(isset($_POST['login'], $_POST['pseudo']))
 		}
 
 }
-
-
-
 // Modifier les paramètres du compte
 if(isset($_POST['modifier'], $_POST['email']))
 {
 	if(preg_match("/^([\w-\.]+)@((?:[\w]+\.)+)([a-zA-Z]{2,4})/i", $_POST['email']))
 	{
-
 		$password = password_hash($_POST['spsw'], PASSWORD_DEFAULT);
-       
-    
 		require_once 'bdd.php';
 		$rqst = $bdd->prepare('UPDATE `membres` SET email=? , pseudo= ? , password = ? WHERE id = ?');
     	$rqst->execute(array($_POST['email'], $_POST['pseudo'], $password, $_POST['id']));
 		$rqst->closeCursor(); 
 		
 	}
+}
+// Supprimer le compte
+if(isset($_GET['idMembre']))
+{
+	require_once 'bdd.php';
+	$rqst = $bdd->prepare('DELETE FROM `membres` WHERE id = ? && role = "membre"');
+	$rqst->execute(array($_GET['idMembre']));
+	$rqst->closeCursor();
+	header('location: Utilisateurs.php');
 }
 

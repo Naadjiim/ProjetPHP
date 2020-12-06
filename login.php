@@ -9,7 +9,6 @@
 <body>
 
   <div id="id01" class="modal">
-    
     <form class="modal-content animate" action="data_processing.php" method="post">
       <div class="imgcontainer">
         <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
@@ -22,7 +21,7 @@
 
         <label for="psw"><b>Mot de passe</b></label>
         <input type="password" placeholder="Entrez un mot de passe" name="psw" required>
-        <button type="submit" name="login">Connexion</button>
+        <button type="submit" name="connexion">Connexion</button>
       </div>
 
       <div class="container" style="background-color:#2b2a2a">
@@ -53,7 +52,7 @@
         <label for="psw-repeat"><b>Confirmer le mot de me passe</b></label>
         <input type="password" placeholder="Confirmez votre mot de passe" name="psw-repeat" required>
         <div class="clearfix">
-        <button type="submit" class="signupbtn" name="signUp">Inscription</button>
+        <button type="submit" class="signupbtn" name="inscription">Inscription</button>
         <button type="button" onclick="document.getElementById('id02').style.display='none'" class="cancelbtn">Annuler</button>
         </div>
       </div>
