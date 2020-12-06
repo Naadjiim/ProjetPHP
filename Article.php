@@ -60,7 +60,7 @@ function vue()
                     if($_SESSION['role'] == 'admin')
                     {
                     ?>
-                        <a href="Article.php?idArticle=<?= $articles['id']; ?>"><i class="fas fa-trash"></i></a>
+                        <a href="Article.php?idArticle=<?= $articles['id']; ?>"><i style="color: #2b2b2b;" class="fas fa-trash"></i></a>
                     <?php
                     }
                     ?>
@@ -105,16 +105,18 @@ function vue()
             while($coms = $rqstCom->fetch())
             {
             ?>
-                <h3><?= $coms['pseudo'].'|'.$coms['datH']; ?></h3>
+                <h3>
+                    <?php 
+                    echo $coms['pseudo'].'|'.$coms['datH'];
+                    if($_SESSION['role'] == 'admin')
+                    {
+                    ?>
+                        <a href="Article.php?idCom=<?= $coms['id']; ?>" ><i style="color: white;" class="fas fa-trash"></i></a>
+                    <?php
+                    }
+                    ?>
+                </h3>
                 <p><?= $coms['commentaire'];?></p>
-                <?php
-                if($_SESSION['role'] == 'admin')
-                {
-                ?>
-                    <a href="Article.php?idCom=<?= $coms['id']; ?>">Supprimer</a>
-                <?php
-                }
-                ?>
             <?php
             }
             $rqstCom->closeCursor(); 
@@ -126,8 +128,6 @@ function vue()
                 </form>
             </div>
         </div>
-        
-        
 
 <?php       
     }
