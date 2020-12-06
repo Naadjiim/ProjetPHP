@@ -17,7 +17,9 @@
   <h1><?= $_SESSION['pseudo'] ?></h1>
   <p class="title"><?= $_SESSION['role'] ?></p>
 
-  <p><button onclick="document.getElementById('id03').style.display='block'">Setting</button></p>
+  <button onclick="document.getElementById('id03').style.display='block'">Setting</button><br>
+  <button onclick="document.getElementById('id04').style.display='block'"><i class="fa fa-fw fa-user"></i>Listes des utilisateurs</button>
+
 </div>
 
 
@@ -48,6 +50,30 @@
       </div>
     </form>
   </div>
+
+
+  <div id="id04" class="modal">
+    <form class="modal-content animate" action="test.php" method="post">
+      <div class="container">
+      <span onclick="document.getElementById('id04').style.display='none'" class="close" title="Close Modal">&times;</span>
+
+        <h1>Utilisateurs</h1>
+        <hr>
+
+        <?php
+
+while($listes = $rqst->fetch())
+      {
+          echo $listes['pseudo'].' '.$listes['email'].' '.$listes['date'].'<a href="data_processing.php?idMembre='.$listes['id'].'"><i class="fas fa-trash"></i></a><br />';
+      }
+      ?>
+
+        </div>
+    </form>
+  </div>
+  
+
+         
 </body>
 
 </html>

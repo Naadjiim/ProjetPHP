@@ -21,7 +21,7 @@ if($_SESSION['role'] == 'admin' )
         $rqst->execute();
         while($listes = $rqst->fetch())
         {
-            echo $listes['pseudo'].' '.$listes['email'].' '.$listes['date'].'<a href="data_processing.php?idMembre='.$listes['id'].'">Supprimer</a><br />';
+            echo $listes['pseudo'].' '.$listes['email'].' '.$listes['date'].'<a href="data_processing.php?idMembre='.$listes['id'].'"><i class="fas fa-trash"></i></a><br />';
         }
         $rqst->closeCursor();
     }

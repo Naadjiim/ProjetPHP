@@ -45,12 +45,14 @@ function vue()
     require_once 'bdd.php';
     $rqstArticle = $bdd->prepare('SELECT *, DATE_FORMAT(dateHeure, "%d/%m/%Y %H:%i") datH FROM articles ORDER BY id DESC');
     $rqstArticle->execute();
+    include 'bootstrap.php';
+
     while($articles = $rqstArticle->fetch())
     {
         $consoles = json_decode($articles['console']);
 ?>
         <div class="card" style="margin-bottom: 2%;">
-            <div class="card-header" style="font-size: 30px;">
+            <div class="card-header" style="font-size: 20px;">
                 <center>
                     <?= $articles['titre'].' | <b>'.$articles['pseudo'].'</b> | '.$articles['datH'];
                     ?>
@@ -58,7 +60,7 @@ function vue()
                     if($_SESSION['role'] == 'admin')
                     {
                     ?>
-                        <a href="Article.php?idArticle=<?= $articles['id']; ?>">Supprimer</a>
+                        <a href="Article.php?idArticle=<?= $articles['id']; ?>"><i class="fas fa-trash"></i></a>
                     <?php
                     }
                     ?>

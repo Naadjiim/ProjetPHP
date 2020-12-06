@@ -21,7 +21,7 @@
     background-color: #2b2b2b;
     text-align: center;
     cursor: pointer;
-    width: 5%;
+    max-width: 30%;
     font-size: 18px;
   }
   

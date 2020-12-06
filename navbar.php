@@ -4,12 +4,7 @@
     <?php
     if(isset($_SESSION['pseudo']))
     {
-      if($_SESSION['role'] == 'admin')
-      {
-      ?>
-        <a href="Utilisateurs.php"><i class="fa fa-fw fa-user"></i>Listes des utilisateurs</a>
-      <?php
-      }
+
       ?>
       <a href="profil.php"><i class="fa fa-fw fa-user"></i><?= $_SESSION['pseudo'] ?></a>
     <?php
