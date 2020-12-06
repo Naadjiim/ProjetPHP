@@ -41,7 +41,7 @@
           <input type="text" placeholder="Entrez une adresse Email" name="email" id="email" required /><br />
 
           <label for="pseudo"><b>Pseudo</b></label>
-          <input type="text" placeholder="Entrez un pseudo" name="pseudo" id="pseudo" required />
+          <input type="text" placeholder="Entrez un pseudo" name="pseudo" required />
 
           <label for="psw"><b>Mot de passe</b></label>
           <input type="password" placeholder="Entrez un mot de passe" name="psw" id="id" required>

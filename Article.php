@@ -93,7 +93,7 @@ function vue()
             </div>
             <div class="card-body">
                 <blockquote class="blockquote mb-0">
-                    <p><?= $articles['contenu'] ?></p>
+                    <?= $articles['contenu'] ?>
                 </blockquote>
             </div>
             <button class="dropdown-btn">Commentaires<i class="fa fa-caret-down"></i></button>

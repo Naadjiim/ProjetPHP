@@ -3,11 +3,11 @@
 <html lang="fr">
   <head>
     <meta charset="UTF-8">
-    <meta name="description" content="Forum sur les jeux vidéos">
-    <meta name="keywords" content="Playstation, Xbox, Nintendo, PC">
-    <meta name="author" content="Nadjim Mostefaoui / Valliere Alan">
-    <meta http-equiv="refresh" content="30">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Forum sur les jeux vidéos"/>
+    <meta name="keywords" content="Playstation, Xbox, Nintendo, PC" />
+    <meta name="author" content="Nadjim Mostefaoui / Valliere Alan"/>
+    <meta http-equiv="refresh" content="30" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link rel="icon" type="icon/ico" href="image/favicon.ico" />
     <title>Accueil</title>
   </head>
@@ -33,26 +33,24 @@
     </div>
     <!-- Page content -->
     <div class="home">
-      <h3 style="color: red;">
         <?php
         if(isset($_GET['diffPsw']))
         {
-          echo 'Mot de passe différent' ;
+          echo ' <h3 style="color: red;">Mot de passe différent</h3>' ;
         }
         if(isset($_GET['pseudoUtil']))
         {
-          echo 'Pseudo utilisée' ;
+          echo '<h3 style="color: red;">Pseudo utilisée</h3>' ;
         }
         if(isset($_GET['emailUtil']))
         {
-          echo 'Email utilisée' ;
+          echo '<h3 style="color: red;">Email utilisée</h3>' ;
         }
         if(isset($_GET['incorrect']))
         {
-          echo 'Pseudo ou mot de passe incorrect' ;
+          echo '<h3 style="color: red;">Pseudo ou mot de passe incorrect</h3>' ;
         }
         ?>
-      </h3>
       <h1>Nouveauté</h1> 
       <?php
       if(isset($_SESSION['pseudo']))
