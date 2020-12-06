@@ -10,7 +10,7 @@ if(isset($_POST['inscription'], $_POST['email']))
 	$rqst->closeCursor();
 	// Email
 	$rqst = $bdd->prepare('SELECT COUNT(*) FROM membres WHERE email = ?');
-	$rqst->execute(array($_POST['email']));
+	$rqst->execute(array(htmlspecialchars($_POST['email'])));
 	$email = $rqst->fetch(); 
 	$rqst->closeCursor();
     if(!($pseudo[0] == 0))
@@ -32,8 +32,8 @@ if(isset($_POST['inscription'], $_POST['email']))
     	    $rqst = $bdd->prepare('INSERT INTO membres (`pseudo`, `email`, `password`, `role`, `dateInscription`) 
     	        VALUES (:pseudo, :email, :password, :role, NOW())');
     	    $rqst->execute(array(
-    	        'pseudo' => $_POST['pseudo'],
-    	        'email' => $_POST['email'],
+    	        'pseudo' => htmlspecialchars($_POST['pseudo']),
+    	        'email' => htmlspecialchars($_POST['email']),
     	        'password' => password_hash($_POST['psw'], PASSWORD_DEFAULT),
     	        'role' => 'membre'
     	    ));
@@ -47,7 +47,7 @@ if(isset($_POST['connexion'], $_POST['pseudo']))
 {
 	require_once 'bdd.php';
 	$rqst = $bdd->prepare('SELECT id, pseudo, email, password, role FROM membres WHERE pseudo = ?');
-	$rqst->execute(array($_POST['pseudo']));
+	$rqst->execute(array(htmlspecialchars($_POST['pseudo'])));
 	$result = $rqst->fetch();
     $rqst->closeCursor();
 	$passCorrect = password_verify($_POST['psw'], $result['password']);
@@ -95,7 +95,12 @@ if(isset($_POST['modifier']))
         session_start();
         require_once 'bdd.php';
         $rqst = $bdd->prepare('UPDATE `membres` SET `pseudo` = ?, email = ?, `password` = ? WHERE id = ?');
-        $rqst->execute(array($_POST['pseudo'],$_POST['email'], password_hash($_POST['psw'], PASSWORD_DEFAULT), $_SESSION['id']));
+        $rqst->execute(array(
+			htmlspecialchars($_POST['pseudo']),
+			htmlspecialchars($_POST['email']), 
+			password_hash($_POST['psw'], PASSWORD_DEFAULT), 
+			$_SESSION['id']
+		));
         $rqst->closeCursor();
         header('location: deconnexion.php');
     }
@@ -105,7 +110,7 @@ if(isset($_GET['idMembre']))
 {
 	require_once 'bdd.php';
 	$rqst = $bdd->prepare('DELETE FROM `membres` WHERE id = ? && role = "membre"');
-	$rqst->execute(array($_GET['idMembre']));
+	$rqst->execute(array(htmlspecialchars($_GET['idMembre'])));
 	$rqst->closeCursor();
 	header('location: profil.php');
 }
