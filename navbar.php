@@ -4,10 +4,9 @@
     <?php
     if(isset($_SESSION['pseudo']))
     {
-
-      ?>
-      <a href="profil.php"><i class="fas fa-sign-out-alt"></i></a>
+    ?>
       <a href="profil.php"><i class="fa fa-fw fa-user"></i><?= $_SESSION['pseudo'] ?></a>
+      <a href="deconnexion.php"><i class="fas fa-sign-out-alt"></i></a>
     <?php
     }
     else

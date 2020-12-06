@@ -10,6 +10,5 @@ setcookie('uname', '');
 setcookie('password', '');
 
 // Redirection sur la page d'accueil
-
 header('location: index.php');
 ?>
